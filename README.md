@@ -25,7 +25,7 @@ Afin de fournir une gestion informatique et utilisatrice efficace et efficiente,
 Chaque rapport de gestionnaire RP est une source d'outil d'aide demandant une gestion informatique plus ou moins compliquée :
 
 * Commerce (Le Marchand)
-    - [ ] Transaction dans une boutique d'armes
+    - [ ] Transaction dans une [boutique d'armes](public/doc/RegularShop.md)
     - [ ] Transaction dans une boutique de joueur (optionnel)
     - [ ] Transaction mono-cible dans l'Hôtel de Vente
     - [ ] Transaction multi-cible (dont échanges) dans l'Hôtel de Vente
