@@ -6,7 +6,17 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import './styles/app.scss';
 
-// Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
-// import $ from 'jquery';
+//region ----- Libraries -----
+
+// Material Design
+import * as mdc from "material-components-web";
+
+//endregion -- Libraries -----
+
+//region ----- Implementations -----
+
+// const mdcList = new mdc.list.MDCList(document.querySelector(".mdc-list"));
+
+//endregion -- Implementations -----
