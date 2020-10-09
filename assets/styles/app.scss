@@ -1,4 +1,3 @@
-@use "~@material/list";
+@use "~@material/list/index" as list;
 
-//@include list.core-styles;
-
+@include list.core-styles;
