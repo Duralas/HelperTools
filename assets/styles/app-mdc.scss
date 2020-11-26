@@ -1,3 +1,4 @@
+@use "~@material/layout-grid/mdc-layout-grid";
 @use "~@material/list/index" as list;
 
 @include list.core-styles;
