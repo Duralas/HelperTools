@@ -19,5 +19,5 @@ L'administration précisera un commentaire sur la récolte.
 ### Particularités
 
 - Un Maître Absolu récupère des ressources supplémentaires.
-- Les lieux de récolte du village des Djöllfulins (bambou et minerai de tamehagane) sont régis selon des règles particulières.
+- Les lieux de récolte du village des Djöllfulins (bambou et minerai de tamahagane) sont régis selon des règles particulières.
 - ...
