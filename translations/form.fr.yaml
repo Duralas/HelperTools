@@ -1,0 +1,42 @@
+character_type.label: 'Nom : '
+
+license_experience_type.label: 'Points métier : '
+
+race_type.choice.abyssal: Abyssal
+race_type.choice.black_stryge: Stryge noir
+race_type.choice.djollfulin: Djöllfulin
+race_type.choice.dwarf: Nain
+race_type.choice.elf: Elfe
+race_type.choice.giant: Géant
+race_type.choice.green_skin: Peau verte
+race_type.choice.human: Humain
+race_type.choice.hybrid: Hybride
+race_type.choice.naga: Naga
+race_type.choice.therianthrope: Thérianthrope
+race_type.choice.vampire: Vampire
+race_type.choice.white_stryge: Stryge blanc
+race_type.label: 'Race : '
+
+tools.collecting_summary.collecting_license.choice.hunter: Chasseur
+tools.collecting_summary.collecting_license.choice.logger: Bûcheron
+tools.collecting_summary.collecting_license.choice.miner: Mineur
+tools.collecting_summary.collecting_license.label: 'Métier de récolte : '
+tools.collecting_summary.collecting_area.choice.apprentice: Apprenti
+tools.collecting_summary.collecting_area.choice.djollfulin-bamboo: Djöllfulin - Bambou
+tools.collecting_summary.collecting_area.choice.djollfulin-tamehagane: Djöllfulin - Tamahagane
+tools.collecting_summary.collecting_area.choice.expert: Expert
+tools.collecting_summary.collecting_area.choice.journeyman: Compagnon
+tools.collecting_summary.collecting_area.choice.master: Maître
+tools.collecting_summary.collecting_area.choice.novice: Novice
+tools.collecting_summary.collecting_area.label: 'Zone de récolte : '
+tools.collecting_summary.additional_reward.label: 'Récompense(s) de bon RP : '
+tools.collecting_summary.collecting_quest.choice.apprentice: Première récolte d'apprenti
+tools.collecting_summary.collecting_quest.choice.expert: Première récolte d'expert
+tools.collecting_summary.collecting_quest.choice.journeyman: Première récolte de compagnon
+tools.collecting_summary.collecting_quest.choice.master: Première récolte de maître
+tools.collecting_summary.collecting_quest.choice.perseverant: Persévérant
+tools.collecting_summary.collecting_quest.choice.without_them: La disparition
+tools.collecting_summary.collecting_quest.choice.word_list: Liste de mots
+tools.collecting_summary.collecting_quest.label: 'Quête(s) réalisée(s) : '
+tools.collecting_summary.comment.label: 'Commentaire(s) : '
+tools.collecting_summary.generate.label: Générer

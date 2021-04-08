@@ -31,7 +31,7 @@ Chaque rapport de gestionnaire RP est une source d'outil d'aide demandant une ge
     - [ ] Transaction multi-cible (dont échanges) dans l'Hôtel de Vente
     - [ ] Affichage des stocks dans l'Hôtel de Vente
 * Métiers (Le Marchand)
-    - [ ] [Rapport de récolte](public/doc/CollectingReport.md) (bûcheron, chasseur, mineur)
+    - [x] [Rapport de récolte](public/doc/CollectingReport.md) (bûcheron, chasseur, mineur)
     - [ ] Rapport de fabrication (forgeron, forgeron d'armures, sculpteur)
 * Combats (Le Juge)
     - [ ] Fiche de combat

@@ -1,13 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Tools;
 
-use App\Form\Tools\CollectingReportType;
-use App\FormHandler\Tools\CollectingReportHandler;
+use App\{
+    Form\Tools\CollectingSummaryType,
+    FormHandler\Tools\CollectingReportHandler,
+    Model\Tools\CollectingSummary
+};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{
+    Request,
+    Response
+};
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -21,66 +28,55 @@ class CollectingReportController extends AbstractController
      * Affiche le formulaire pour construire le rapport de récolte et la dernière génération effectuée.
      *
      * @Route("/outils/rapport-de-récolte", name="tools_collecting_report", methods={"GET"})
-     *
-     * @return Response Template du formulaire de l'outil
      */
     public function index(): Response
     {
-        $collectingReportForm = $this->createForm(CollectingReportType::class, null, [
-            'method' => Request::METHOD_POST,
-            'action' => $this->generateUrl('tools_collecting_report_generation'),
-        ]);
-
-        return $this->getToolRenderingResponse($collectingReportForm);
+        return $this->getToolRenderingResponse(
+            $this->createForm(CollectingSummaryType::class, new CollectingSummary(), [
+                'method' => Request::METHOD_POST,
+                'action' => $this->generateUrl('tools_collecting_report_generation'),
+            ])
+        );
     }
 
     /**
      * [TWIG] Traitement de "génération" lié à l'outil "collecting_repost".
      *
-     * Gère la soumission du formulaire {@see CollectingReportType} pour réaliser la génération du template de l'outil et affiche le résultat sur la page.
+     * Gère la soumission du formulaire {@see CollectingSummaryType} pour réaliser la génération du template de l'outil et affiche le résultat sur la page.
      *
      * En cas d'erreur, affiche également ces erreurs.
      *
      * @Route("/outils/rapport-de-récolte", name="tools_collecting_report_generation", methods={"POST"})
-     *
-     * @param Request $request
-     *
-     * @return Response Template de la génération (avec le formulaire)
      */
     public function generate(Request $request, CollectingReportHandler $formHandler): Response
     {
+        $collectingSummary = new CollectingSummary();
         // Récupération du formulaire
         $collectingReportForm = $this
-            ->createForm(CollectingReportType::class, null, [
+            ->createForm(CollectingSummaryType::class, $collectingSummary, [
                 'method' => Request::METHOD_POST,
                 'action' => $this->generateUrl('tools_collecting_report_generation'),
             ])
             ->handleRequest($request)
         ;
-        $collectingReportData = $collectingReportForm->getData();
-
-        $generation = $collectingReportForm->isValid() ? $formHandler->generate($collectingReportData) : null;
 
         // Affichage du template
-        return $this->getToolRenderingResponse($collectingReportForm, $generation);
+        return $this->getToolRenderingResponse(
+            $collectingReportForm,
+            $collectingReportForm->isValid() ? $formHandler->generateTemplate($collectingSummary) : null
+        );
     }
 
     /**
      * Construit la réponse du template TWIG pour l'outil avec le formulaire et la génération si elle a été réalisée.
-     *
-     * @param FormInterface $toolForm             Formulaire de l'outil pour la génération
-     * @param string|null   $toolGeneration       [Optionnel] Génération de l'outil
-     * @param array         $additionalParameters [Optionnel] Paramètres complémentaires pour la requête
-     *
-     * @return Response Template de l'outil avec les paramètres fournis
      */
-    private function getToolRenderingResponse(FormInterface $toolForm, $toolGeneration = null, array $additionalParameters = []): Response
+    private function getToolRenderingResponse(FormInterface $toolForm, ?string $toolGeneration = null, array $requestParameters = []): Response
     {
-        $additionalParameters['tool_form'] = $toolForm->createView();
-        if ($toolGeneration) {
-            $additionalParameters['tool_generation'] = $toolGeneration;
+        $requestParameters['tool_form'] = $toolForm->createView();
+        if (is_string($toolGeneration)) {
+            $requestParameters['tool_generation'] = $toolGeneration;
         }
 
-        return $this->render('tools/collecting_report/index.html.twig', $additionalParameters);
+        return $this->render('tools/collecting_report/index.html.twig', $requestParameters);
     }
 }
