@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Outils - Rapport de récolte{% endblock %}
+
+{% block body %}
+    <h1>Génération d'un rapport de récolte</h1>
+
+    {% include 'tools/collecting_report/form.html.twig' %}
+
+    {% if tool_generation ?? false %}
+        {% include 'tools/collecting_report/generation.html.twig' %}
+    {% endif %}
+{% endblock %}

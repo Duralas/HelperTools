@@ -1,0 +1,61 @@
+tools.collecting_report.hunter.novice: >-
+  ]0,10] x1 Défense de sanglier|]10,20] x2 Défense de sanglier|]20,30] x2 Défense de sanglier, x1 Cuir de sanglier|]30,200[x2 Défense de sanglier, x2 Cuir de sanglier|{200} x2 Défense de sanglier, x2 Cuir de sanglier, x1 Ressource supplémentaire
+tools.collecting_report.hunter.apprentice: >-
+  ]40,50] x1 Plume d'aigle|]50,60] x2 Plume d'aigle|]60,70] x2 Plume d'aigle, x1 Bec d'aigle|]70,200[x2 Plume d'aigle, x1 Bec d'aigle, x1 Serre d'aigle|{200} x2 Plume d'aigle, x1 Bec d'aigle, x1 Serre d'aigle, x1 Ressource supplémentaire
+tools.collecting_report.hunter.journeyman: >-
+  ]80,90] x1 Écaille de crocodile|]90,100] x2 Écaille de crocodile|]100,110] x2 Écaille de crocodile, x1 Cuir de crocodile|]110,200[x2 Écaille de crocodile, x1 Cuir de crocodile, x1 Dent de crocodile|{200} x2 Écaille de crocodile, x1 Cuir de crocodile, x1 Dent de crocodile, x1 Ressource supplémentaire
+tools.collecting_report.hunter.expert: >-
+  ]120,130] x1 Corne de rhinocéros|]130,140] x2 Corne de rhinocéros|]140,150] x2 Corne de rhinocéros, x1 Peau renforcée|]150,200[x2 Corne de rhinocéros, x2 Peau renforcée|{200} x2 Corne de rhinocéros, x2 Peau renforcée, x1 Ressource supplémentaire
+tools.collecting_report.hunter.master: >-
+  ]160,170] x1 Écaille de wyverne|]170,180] x2 Écaille de wyverne|]180,190] x2 Écaille de wyverne, x1 Membrane de wyverne|]190,200[x2 Écaille de wyverne, x1 Membrane de wyverne, x1 Tibia de wyverne|{200} x2 Écaille de wyverne, x1 Membrane de wyverne, x1 Tibia de wyverne, x1 Ressource supplémentaire
+tools.collecting_report.hunter.djollfulin-bamboo: x5 Bamboo
+tools.collecting_report.hunter.djollfulin-tamehagane: x5 Minerai de tamahagane
+tools.collecting_report.logger.novice: >-
+  ]0,10] x5 Bois de sureau|]10,20] x10 Bois de sureau|]20,30] x15 Bois de sureau|]30,200[x20 Bois de sureau|{200} x25 Bois de sureau
+tools.collecting_report.logger.apprentice: >-
+  ]40,50] x5 Bois de cerisier|]50,60] x10 Bois de cerisier|]60,70] x15 Bois de cerisier|]70,200[x20 Bois de cerisier|{200} x25 Bois de cerisier
+tools.collecting_report.logger.journeyman: >-
+  ]80,90] x5 Bois de sapin|]90,100] x10 Bois de sapin|]100,110] x15 Bois de sapin|]110,200[x20 Bois de sapin|{200} x25 Bois de sapin
+tools.collecting_report.logger.expert: >-
+  ]120,130] x5 Bois de chêne|]130,140] x10 Bois de chêne|]140,150] x15 Bois de chêne|]150,200[x20 Bois de chêne|{200} x25 Bois de chêne
+tools.collecting_report.logger.master: >-
+  ]160,170] x5 Bois de baobab|]170,180] x10 Bois de baobab|]180,190] x15 Bois de baobab|]190,200[x20 Bois de baobab|{200} x25 Bois de baobab
+tools.collecting_report.logger.djollfulin-bamboo: >-
+  ]0,175] x5 Bamboo|]175,185] x5 Bambou, x5 Bois de sureau|]185,200] x10 Bambou, x5 Bois de sureau, x5 Minerai de cerisier|{200} x20 Bambou, x5 Bois de sureau, x5 Minerai de cerisier
+tools.collecting_report.logger.djollfulin-tamehagane: x5 Minerai de tamahagane
+tools.collecting_report.miner.novice: >-
+  ]0,10] x5 Minerai de fer|]10,20] x10 Minerai de fer|]20,30] x15 Minerai de fer|]30,200[x20 Minerai de fer|{200} x25 Minerai de fer
+tools.collecting_report.miner.apprentice: >-
+  ]40,50] x5 Minerai de cuivre|]50,60] x10 Minerai de cuivre|]60,70] x15 Minerai de cuivre|]70,200[x20 Minerai de cuivre|{200} x25 Minerai de cuivre
+tools.collecting_report.miner.journeyman: >-
+  ]80,90] x5 Minerai d'argent|]90,100] x10 Minerai d'argent|]100,110] x15 Minerai d'argent|]110,200[x20 Minerai d'argent|{200} x25 Minerai d'argent
+tools.collecting_report.miner.expert: >-
+  ]120,130] x5 Minerai d'or|]130,140] x10 Minerai d'or|]140,150] x15 Minerai d'or|]150,200[x20 Minerai d'or|{200} x25 Minerai d'or
+tools.collecting_report.miner.master: >-
+  ]160,170] x5 Minerai de diamant|]170,180] x10 Minerai de diamant|]180,190] x15 Minerai de diamant|]190,200[x20 Minerai de diamant|{200} x25 Minerai de diamant
+tools.collecting_report.miner.djollfulin-bamboo: x5 Bamboo
+tools.collecting_report.miner.djollfulin-tamehagane: >-
+  ]0,175] x5 Minerai de tamahagane|]175,185] x5 Minerai de tamahagane, x5 Minerai de fer|]185,200] x10 Minerai de tamahagane, x5 Minerai de fer, x5 Minerai de cuivre|{200} x20 Minerai de tamahagane, x5 Minerai de fer, x5 Minerai de cuivre
+tools.collecting_report.exp_reward: >-
+  {0} |{1} , 1 point métier|]1,+Inf[ , %count% points métier
+tools.collecting_report.quest.logger.apprentice: x5 Bois de cerisier et 10 points d'expérience
+tools.collecting_report.quest.logger.journeyman: x6 Bois de sapin, x2 Bois de sureau et 20 points d'expérience
+tools.collecting_report.quest.logger.expert: x7 Bois de chêne, x2 Bois de sureau et 30 points d'expérience
+tools.collecting_report.quest.logger.master: x10 Bois de baobab et 40 points d'expérience
+tools.collecting_report.quest.logger.perseverant: x1 Peau de troll des marais, x1 Peau de troll des glaces, x1 Peau des troll des forêts, x1 Peau de troll des montagnes, x1 Défense de pachyderme et 40 points d'expérience
+tools.collecting_report.quest.logger.without_them: x2 Potion d'hypersensibilité (+50% effets négatifs) et x2 Potion d'insensibilité (annulation des effets négatifs)
+tools.collecting_report.quest.logger.word_list: 500 pièces d'or
+tools.collecting_report.quest.hunter.apprentice: x1 Plume d'aigle et 10 points d'expérience
+tools.collecting_report.quest.hunter.journeyman: x1 Écaille de crocodile, x1 Cuir de sanglier et 20 points d'expérience
+tools.collecting_report.quest.hunter.expert: x1 Peau cuirassée, x2 Défense de sanglier et 30 points d'expérience
+tools.collecting_report.quest.hunter.master: x2 Écailles de wyverne et 40 points d'expérience
+tools.collecting_report.quest.hunter.perseverant: x1 Peau de troll des marais, x1 Peau de troll des glaces, x1 Peau des troll des forêts, x1 Peau de troll des montagnes, x1 Défense de pachyderme et 40 points d'expérience
+tools.collecting_report.quest.hunter.word_list: 500 pièces d'or
+tools.collecting_report.quest.hunter.without_them: x2 Potion d'hypersensibilité (+50% effets négatifs) et x2 Potion d'insensibilité (annulation des effets négatifs)
+tools.collecting_report.quest.miner.apprentice: x5 Minerai de cuivre et 10 points d'expérience
+tools.collecting_report.quest.miner.journeyman: x6 Minerai d'argent, x2 Minerai de fer et 20 points d'expérience
+tools.collecting_report.quest.miner.expert: x7 Minerai d'or, x2 Minerai de fer et 30 points d'expérience
+tools.collecting_report.quest.miner.master: x10 Minerai de diamant et 40 points d'expérience
+tools.collecting_report.quest.miner.perseverant: x1 Peau de troll des marais, x1 Peau de troll des glaces, x1 Peau des troll des forêts, x1 Peau de troll des montagnes, x1 Défense de pachyderme et 40 points d'expérience
+tools.collecting_report.quest.miner.word_list: 500 pièces d'or
+tools.collecting_report.quest.miner.without_them: x2 Potion d'hypersensibilité (+50% effets négatifs) et x2 Potion d'insensibilité (annulation des effets négatifs)
