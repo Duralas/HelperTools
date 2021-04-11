@@ -26,6 +26,9 @@
     "doctrine/dbal": {
         "version": "2.11.1"
     },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
+    },
     "doctrine/doctrine-bundle": {
         "version": "2.0",
         "recipe": {
@@ -74,9 +77,6 @@
     },
     "doctrine/persistence": {
         "version": "2.0.0"
-    },
-    "doctrine/reflection": {
-        "version": "1.2.1"
     },
     "doctrine/sql-formatter": {
         "version": "1.1.1"
@@ -531,9 +531,6 @@
     },
     "twig/twig": {
         "version": "v3.0.5"
-    },
-    "webimpress/safe-writer": {
-        "version": "2.1.0"
     },
     "webmozart/assert": {
         "version": "1.9.1"
