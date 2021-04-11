@@ -13,13 +13,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 final class CollectingSummary
 {
     public const COLLECTING_AREAS = [
-        'novice',
-        'apprentice',
-        'journeyman',
-        'expert',
-        'master',
-        'djollfulin-bamboo',
-        'djollfulin-tamehagane',
+        CollectingSummary::COLLECTING_AREA_NOVICE,
+        CollectingSummary::COLLECTING_AREA_APPRENTICE,
+        CollectingSummary::COLLECTING_AREA_JOURNEYMAN,
+        CollectingSummary::COLLECTING_AREA_EXPERT,
+        CollectingSummary::COLLECTING_AREA_MASTER,
+        CollectingSummary::COLLECTING_AREA_DJOLLFULIN_BAMBOO,
+        CollectingSummary::COLLECTING_AREA_DJOLLFULIN_TAMEHAGANE,
     ];
     public const COLLECTING_LICENSES = [
         'hunter',
@@ -36,6 +36,14 @@ final class CollectingSummary
         CollectingSummary::QUEST_WITHOUT_THEM,
     ];
 
+    public const COLLECTING_AREA_NOVICE = 'novice';
+    public const COLLECTING_AREA_APPRENTICE = 'apprentice';
+    public const COLLECTING_AREA_JOURNEYMAN = 'journeyman';
+    public const COLLECTING_AREA_EXPERT = 'expert';
+    public const COLLECTING_AREA_MASTER = 'master';
+    public const COLLECTING_AREA_DJOLLFULIN_BAMBOO = 'djollfulin-bamboo';
+    public const COLLECTING_AREA_DJOLLFULIN_TAMEHAGANE = 'djollfulin-tamehagane';
+
     public const QUEST_APPRENTICE = 'apprentice';
     public const QUEST_JOURNEYMAN = 'journeyman';
     public const QUEST_EXPERT = 'expert';
@@ -43,7 +51,7 @@ final class CollectingSummary
     public const QUEST_PERSEVERANT = 'perseverant';
     public const QUEST_WORD_LIST = 'word_list';
     public const QUEST_WITHOUT_THEM = 'without_them';
-    
+
     /** @Assert\NotBlank(message="Le nom du personnage est obligatoire.") */
     protected string $character = '';
 

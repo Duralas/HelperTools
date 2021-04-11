@@ -17,7 +17,19 @@ use Symfony\Component\Validator\{
 
 class LicenseExperienceType extends AbstractType
 {
+    public const EXPERIENCE_BY_RP = 5;
     public const MAX_EXPERIENCE = 200;
+    public const MIN_REQUIREMENT_APPRENTICE = 41;
+    public const MIN_REQUIREMENT_JOURNEYMAN = 81;
+    public const MIN_REQUIREMENT_EXPERT = 121;
+    public const MIN_REQUIREMENT_MASTER = 161;
+    public const MIN_REQUIREMENT_ABSOLUTE_MASTER = 200;
+
+    public const LICENSE_RANK_APPRENTICE = 'apprentice';
+    public const LICENSE_RANK_JOURNEYMAN = 'journeyman';
+    public const LICENSE_RANK_EXPERT = 'expert';
+    public const LICENSE_RANK_MASTER = 'master';
+    public const LICENSE_RANK_ABSOLUTE_MASTER = 'absolute_master';
 
     public function configureOptions(OptionsResolver $resolver)
     {

@@ -8,7 +8,8 @@ use App\{
     Form\Common\LicenseExperienceType,
     Model\Common\Quest,
     Model\Tools\CollectingReport,
-    Model\Tools\CollectingSummary};
+    Model\Tools\CollectingSummary
+};
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
@@ -42,7 +43,7 @@ final class CollectingReportHandler
                     $this->getLootsInArea($collectingSummary->getCollectingLicense(), $collectingSummary->getCollectingArea(), $collectingSummary->getLicenseExperience()),
                     $this->getEarnedXp($collectingSummary->getLicenseExperience(), $collectingSummary->getCollectingArea()),
                     $collectingSummary->getAdditionalReward(),
-                    $collectingSummary->getComment(),
+                    $this->completeComment($collectingSummary->getComment(), $collectingSummary->getLicenseExperience(), $collectingSummary->getCollectingArea(), $collectingSummary->getAdditionalReward()),
                     $this->getValidatedQuests($collectingSummary->getCollectingLicense(), $collectingSummary->getCollectingQuest())
                 )
             )
@@ -73,12 +74,7 @@ final class CollectingReportHandler
 
     private function getEarnedXp(int $experience, string $collectingArea): string
     {
-        $earnedXp = min(LicenseExperienceType::MAX_EXPERIENCE - $experience, 5);
-        if (LicenseExperienceType::MAX_EXPERIENCE - $experience <= 5 && $collectingArea !== 'master') {
-            $earnedXp = max(0, $earnedXp - 1);
-        }
-
-        return $this->translator->trans('tools.collecting_report.exp_reward', ['%count%' => $earnedXp]);
+        return $this->translator->trans('tools.collecting_report.exp_reward', ['%count%' => $this->calculateEarnedXp($experience, $collectingArea)]);
     }
 
     private function getLootsInArea(string $license, string $collectingArea, int $experience): string
@@ -90,5 +86,49 @@ final class CollectingReportHandler
         }
 
         return $collectMessage;
+    }
+
+    private function completeComment(string $comment, int $experience, string $collectingArea, string $additionalReward): string
+    {
+        $earnedXp = $this->calculateEarnedXp($experience, $collectingArea);
+
+        if ($earnedXp === 0) {
+            return $comment;
+        }
+
+        // Vérification des points métier en récompense additionnelle
+        if ($earnedXp >= LicenseExperienceType::EXPERIENCE_BY_RP && stripos($additionalReward, 'points métier') !== false) {
+            preg_match('/(?<xp>\d+) points métier/u', $additionalReward, $matches);
+            if (array_key_exists('xp', $matches)) {
+                $earnedXp += (int) $matches['xp'];
+            }
+        }
+
+        $licenseRequirements = [
+            LicenseExperienceType::LICENSE_RANK_APPRENTICE => LicenseExperienceType::MIN_REQUIREMENT_APPRENTICE,
+            LicenseExperienceType::LICENSE_RANK_JOURNEYMAN => LicenseExperienceType::MIN_REQUIREMENT_JOURNEYMAN,
+            LicenseExperienceType::LICENSE_RANK_EXPERT => LicenseExperienceType::MIN_REQUIREMENT_EXPERT,
+            LicenseExperienceType::LICENSE_RANK_MASTER => LicenseExperienceType::MIN_REQUIREMENT_MASTER,
+            LicenseExperienceType::LICENSE_RANK_ABSOLUTE_MASTER => LicenseExperienceType::MIN_REQUIREMENT_ABSOLUTE_MASTER,
+        ];
+        foreach ($licenseRequirements as $license => $requirement) {
+            if ($experience < $requirement && $experience + $earnedXp >= $requirement) {
+                $comment = $this->translator->trans("tools.collecting_report.comment.ranking_up.{$license}") . "\n{$comment}";
+
+                break;
+            }
+        }
+
+        return $comment;
+    }
+
+    private function calculateEarnedXp(int $experience, string $collectingArea): int
+    {
+        $earnedXp = min(LicenseExperienceType::MAX_EXPERIENCE - $experience, LicenseExperienceType::EXPERIENCE_BY_RP);
+        if (LicenseExperienceType::MAX_EXPERIENCE - $experience <= LicenseExperienceType::EXPERIENCE_BY_RP && $collectingArea !== CollectingSummary::COLLECTING_AREA_MASTER) {
+            $earnedXp = max(0, $earnedXp - 1);
+        }
+
+        return $earnedXp;
     }
 }
