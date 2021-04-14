@@ -5,8 +5,12 @@ declare(strict_types=1);
 namespace App\Model\Tools;
 
 use App\{
-    Form\Common\LicenseExperienceType,
-    Form\Common\RaceType
+    Validator\Constraints\Character,
+    Validator\Constraints\CollectingArea,
+    Validator\Constraints\CollectingLicense,
+    Validator\Constraints\CollectingQuest,
+    Validator\Constraints\CraftingExperience,
+    Validator\Constraints\Race
 };
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -52,33 +56,30 @@ final class CollectingSummary
     public const QUEST_WORD_LIST = 'word_list';
     public const QUEST_WITHOUT_THEM = 'without_them';
 
-    /** @Assert\NotBlank(message="Le nom du personnage est obligatoire.") */
+    /** @Character */
     protected string $character = '';
 
-    /** @Assert\Choice(choices=RaceType::RACE_CHOICES, message="La race ne correspond à aucune jouable.") */
+    /** @Race */
     protected string $race = '';
 
-    /** @Assert\Choice(choices=CollectingSummary::COLLECTING_LICENSES, message="Le métier ne correspond à aucun connu.")*/
+    /** @CollectingLicense */
     protected string $collectingLicense = '';
 
-    /**
-     * @Assert\PositiveOrZero(message="L'expérience métier ne peut être une valeur négative.")
-     * @Assert\LessThanOrEqual(value=LicenseExperienceType::MAX_EXPERIENCE, message="Il n'est pas possible de dépasser la valeur {{ compared_value }}.")
-     */
-    protected int $licenseExperience = 0;
+    /** @CraftingExperience */
+    protected ?int $craftingExperience = null;
 
-    /** @Assert\Choice(choices=CollectingSummary::COLLECTING_AREAS, message="La zone de récolte ne correspond à aucune connue.") */
+    /** @CollectingArea */
     protected string $collectingArea = '';
 
     protected string $additionalReward = '';
 
     /**
-     * @Assert\Choice(multiple=true, choices=CollectingSummary::COLLECTING_QUESTS, message="La quête ne correspond à aucune connue.")
+     * @CollectingQuest
      * @var string[]
      */
     protected ?array $collectingQuest = null;
 
-    /** @Assert\NotBlank(message="Un commentaire pour aider le *rôle player* à s'améliorer ?") */
+    /** @Assert\NotBlank(message="Un commentaire pour aider le joueur à s'améliorer ?") */
     protected string $comment = '';
 
     public function getCharacter(): string
@@ -117,14 +118,14 @@ final class CollectingSummary
         return $this;
     }
 
-    public function getLicenseExperience(): int
+    public function getCraftingExperience(): ?int
     {
-        return $this->licenseExperience;
+        return $this->craftingExperience;
     }
 
-    public function setLicenseExperience(int $licenseExperience): self
+    public function setCraftingExperience(?int $craftingExperience): self
     {
-        $this->licenseExperience = $licenseExperience;
+        $this->craftingExperience = $craftingExperience;
 
         return $this;
     }

@@ -70,9 +70,9 @@ class CollectingReportController extends AbstractController
     /**
      * Construit la réponse du template TWIG pour l'outil avec le formulaire et la génération si elle a été réalisée.
      */
-    private function getToolRenderingResponse(FormInterface $toolForm, ?string $toolGeneration = null, array $requestParameters = []): Response
+    private function getToolRenderingResponse(FormInterface $toolForm, ?string $toolGeneration = null): Response
     {
-        $requestParameters['tool_form'] = $toolForm->createView();
+        $requestParameters = ['tool_form' => $toolForm->createView()];
         if (is_string($toolGeneration)) {
             $requestParameters['tool_generation'] = $toolGeneration;
         }

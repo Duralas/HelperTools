@@ -1,6 +1,6 @@
 character_type.label: 'Nom : '
 
-license_experience_type.label: 'Points métier : '
+crafting_experience_type.label: 'Points métier : '
 
 race_type.choice.abyssal: Abyssal
 race_type.choice.black_stryge: Stryge noir

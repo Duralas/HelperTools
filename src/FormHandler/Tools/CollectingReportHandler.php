@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\FormHandler\Tools;
 
 use App\{
-    Form\Common\LicenseExperienceType,
+    Form\Common\CraftingExperienceType,
     Model\Common\Quest,
     Model\Tools\CollectingReport,
     Model\Tools\CollectingSummary
@@ -34,16 +34,18 @@ final class CollectingReportHandler
 
     public function generateTemplate(CollectingSummary $collectingSummary): string
     {
+        $craftingExperience = $collectingSummary->getCraftingExperience();
+
         return $this->rendering->render(
             'tools/collecting_report/template.html.twig',
             $this->normalizer->normalize(
                 new CollectingReport(
                     $collectingSummary->getRace(),
                     $collectingSummary->getCharacter(),
-                    $this->getLootsInArea($collectingSummary->getCollectingLicense(), $collectingSummary->getCollectingArea(), $collectingSummary->getLicenseExperience()),
-                    $this->getEarnedXp($collectingSummary->getLicenseExperience(), $collectingSummary->getCollectingArea()),
+                    $this->getLootsInArea($collectingSummary->getCollectingLicense(), $collectingSummary->getCollectingArea(), $craftingExperience),
+                    is_int($craftingExperience) ? $this->getEarnedXp($craftingExperience, $collectingSummary->getCollectingArea()) : '',
                     $collectingSummary->getAdditionalReward(),
-                    $this->completeComment($collectingSummary->getComment(), $collectingSummary->getLicenseExperience(), $collectingSummary->getCollectingArea(), $collectingSummary->getAdditionalReward()),
+                    is_int($craftingExperience) ? $this->completeComment($collectingSummary->getComment(), $craftingExperience, $collectingSummary->getCollectingArea(), $collectingSummary->getAdditionalReward()) : '',
                     $this->getValidatedQuests($collectingSummary->getCollectingLicense(), $collectingSummary->getCollectingQuest())
                 )
             )
@@ -77,8 +79,10 @@ final class CollectingReportHandler
         return $this->translator->trans('tools.collecting_report.exp_reward', ['%count%' => $this->calculateEarnedXp($experience, $collectingArea)]);
     }
 
-    private function getLootsInArea(string $license, string $collectingArea, int $experience): string
+    private function getLootsInArea(string $license, string $collectingArea, ?int $experience): string
     {
+        $experience = is_int($experience) ? $experience : 0;
+
         $collectTranslationKey = "tools.collecting_report.{$license}.{$collectingArea}";
         $collectMessage = $this->translator->trans($collectTranslationKey, ['%count%' => $experience]);
         if ($collectMessage === $collectTranslationKey) {
@@ -97,7 +101,7 @@ final class CollectingReportHandler
         }
 
         // Vérification des points métier en récompense additionnelle
-        if ($earnedXp >= LicenseExperienceType::EXPERIENCE_BY_RP && stripos($additionalReward, 'points métier') !== false) {
+        if ($earnedXp >= CraftingExperienceType::EXPERIENCE_BY_RP && stripos($additionalReward, 'points métier') !== false) {
             preg_match('/(?<xp>\d+) points métier/u', $additionalReward, $matches);
             if (array_key_exists('xp', $matches)) {
                 $earnedXp += (int) $matches['xp'];
@@ -105,11 +109,11 @@ final class CollectingReportHandler
         }
 
         $licenseRequirements = [
-            LicenseExperienceType::LICENSE_RANK_APPRENTICE => LicenseExperienceType::MIN_REQUIREMENT_APPRENTICE,
-            LicenseExperienceType::LICENSE_RANK_JOURNEYMAN => LicenseExperienceType::MIN_REQUIREMENT_JOURNEYMAN,
-            LicenseExperienceType::LICENSE_RANK_EXPERT => LicenseExperienceType::MIN_REQUIREMENT_EXPERT,
-            LicenseExperienceType::LICENSE_RANK_MASTER => LicenseExperienceType::MIN_REQUIREMENT_MASTER,
-            LicenseExperienceType::LICENSE_RANK_ABSOLUTE_MASTER => LicenseExperienceType::MIN_REQUIREMENT_ABSOLUTE_MASTER,
+            CraftingExperienceType::LICENSE_RANK_APPRENTICE => CraftingExperienceType::MIN_REQUIREMENT_APPRENTICE,
+            CraftingExperienceType::LICENSE_RANK_JOURNEYMAN => CraftingExperienceType::MIN_REQUIREMENT_JOURNEYMAN,
+            CraftingExperienceType::LICENSE_RANK_EXPERT => CraftingExperienceType::MIN_REQUIREMENT_EXPERT,
+            CraftingExperienceType::LICENSE_RANK_MASTER => CraftingExperienceType::MIN_REQUIREMENT_MASTER,
+            CraftingExperienceType::LICENSE_RANK_ABSOLUTE_MASTER => CraftingExperienceType::MIN_REQUIREMENT_ABSOLUTE_MASTER,
         ];
         foreach ($licenseRequirements as $license => $requirement) {
             if ($experience < $requirement && $experience + $earnedXp >= $requirement) {
@@ -124,8 +128,8 @@ final class CollectingReportHandler
 
     private function calculateEarnedXp(int $experience, string $collectingArea): int
     {
-        $earnedXp = min(LicenseExperienceType::MAX_EXPERIENCE - $experience, LicenseExperienceType::EXPERIENCE_BY_RP);
-        if (LicenseExperienceType::MAX_EXPERIENCE - $experience <= LicenseExperienceType::EXPERIENCE_BY_RP && $collectingArea !== CollectingSummary::COLLECTING_AREA_MASTER) {
+        $earnedXp = min(CraftingExperienceType::MAX_EXPERIENCE - $experience, CraftingExperienceType::EXPERIENCE_BY_RP);
+        if (CraftingExperienceType::MAX_EXPERIENCE - $experience <= CraftingExperienceType::EXPERIENCE_BY_RP && $collectingArea !== CollectingSummary::COLLECTING_AREA_MASTER) {
             $earnedXp = max(0, $earnedXp - 1);
         }
 

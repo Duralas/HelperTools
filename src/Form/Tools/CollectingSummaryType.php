@@ -6,7 +6,7 @@ namespace App\Form\Tools;
 
 use App\{
     Form\Common\CharacterType,
-    Form\Common\LicenseExperienceType,
+    Form\Common\CraftingExperienceType,
     Form\Common\RaceType,
     Form\Common\StringChoiceType,
     Model\Tools\CollectingSummary
@@ -39,7 +39,7 @@ class CollectingSummaryType extends AbstractType
                 'choices' => CollectingSummary::COLLECTING_LICENSES,
                 'choice_label' => static fn (string $value) => "tools.collecting_summary.collecting_license.choice.{$value}",
             ])
-            ->add('licenseExperience', LicenseExperienceType::class)
+            ->add('craftingExperience', CraftingExperienceType::class)
             ->add('collectingArea', StringChoiceType::class, [
                 'label' => 'tools.collecting_summary.collecting_area.label',
                 'choices' => CollectingSummary::COLLECTING_AREAS,

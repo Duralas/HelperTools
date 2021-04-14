@@ -15,7 +15,7 @@ use Symfony\Component\Validator\{
     Constraints\PositiveOrZero
 };
 
-class LicenseExperienceType extends AbstractType
+class CraftingExperienceType extends AbstractType
 {
     public const EXPERIENCE_BY_RP = 5;
     public const MAX_EXPERIENCE = 200;
@@ -31,11 +31,12 @@ class LicenseExperienceType extends AbstractType
     public const LICENSE_RANK_MASTER = 'master';
     public const LICENSE_RANK_ABSOLUTE_MASTER = 'absolute_master';
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(
             [
-                'label' => 'license_experience_type.label',
+                'label' => 'crafting_experience_type.label',
+                'required' => false,
                 'attr' => [
                     'min' => 0,
                     'max' => static::MAX_EXPERIENCE,
@@ -50,7 +51,7 @@ class LicenseExperienceType extends AbstractType
         );
     }
 
-    public function getParent()
+    public function getParent(): string
     {
         return NumberType::class;
     }

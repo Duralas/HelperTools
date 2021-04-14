@@ -12,7 +12,7 @@ Selon le nombre de points métier du personnage et le lieu de récolte, le réco
 
 Si le RP est de qualité, le personnage peut réaliser une "récolte de qualité" et il récupèrera des récompenses bonus : ressources rares ou points métier.
 
-Des quêtes métier sont à disposition et le personnage pourra des récompenses prédéfinies : pièces d'or, expérience, ressources, butins, etc.
+Des quêtes métier sont à disposition et le personnage récupérera des récompenses prédéfinies : pièces d'or, expérience, ressources, butins, etc.
 
 L'administration précisera un commentaire sur la récolte.
 
