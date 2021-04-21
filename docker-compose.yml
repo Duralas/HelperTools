@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  php:
+    image: duralas/helper_tools_php
+    container_name: duralas_helper_tools_php
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - ./:/app
