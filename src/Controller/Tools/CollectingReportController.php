@@ -27,7 +27,7 @@ class CollectingReportController extends AbstractController
      *
      * Affiche le formulaire pour construire le rapport de récolte et la dernière génération effectuée.
      *
-     * @Route("/outils/rapport-de-récolte", name="tools_collecting_report", methods={"GET"})
+     * @Route("/tools/collecting-report", name="tools_collecting_report", methods={"GET"})
      */
     public function index(): Response
     {
@@ -46,7 +46,7 @@ class CollectingReportController extends AbstractController
      *
      * En cas d'erreur, affiche également ces erreurs.
      *
-     * @Route("/outils/rapport-de-récolte", name="tools_collecting_report_generation", methods={"POST"})
+     * @Route("/tools/collecting-report", name="tools_collecting_report_generation", methods={"POST"})
      */
     public function generate(Request $request, CollectingReportHandler $formHandler): Response
     {
