@@ -1,1 +1,1 @@
-web: heroku-php-apache2 public/
+web: heroku-php-nginx -C deploy/helper_tools.conf public/
