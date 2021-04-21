@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Outils - Rapport de fabrication{% endblock %}
+
+{% block body %}
+    <h1>Génération d'un rapport de fabrication</h1>
+
+    {% if tool_generation ?? false %}
+        {% include 'tools/manufacturing_report/generation.html.twig' %}
+    {% endif %}
+
+    {% include 'tools/manufacturing_report/form.html.twig' %}
+{% endblock %}

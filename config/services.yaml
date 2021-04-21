@@ -21,9 +21,15 @@ services:
         exclude:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
+            - '../src/Form/'
             - '../src/Kernel.php'
             - '../src/Service/'
             - '../src/Tests/'
+
+    App\Form\:
+      resource: '../src/Form/'
+      bind:
+        $equipments: '%app_duralas_system_equipments%'
 
     App\Service\RandomHeader:
       bind:
