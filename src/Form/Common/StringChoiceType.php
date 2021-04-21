@@ -26,7 +26,7 @@ class StringChoiceType extends ChoiceType implements DataTransformerInterface
         // Récupération de l'option en tant qu'attribut de class pour les méthodes DataTransformer
         $optIsNullable = $options['is_nullable'];
         if (is_bool($optIsNullable) === false) {
-            throw new UnexpectedTypeException($optIsNullable, 'string');
+            throw new UnexpectedTypeException($optIsNullable, 'bool');
         }
         $this->isNullable = $optIsNullable;
     }
