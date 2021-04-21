@@ -9,12 +9,16 @@ RUN \
 
 COPY docker/php/config/php.ini /usr/local/etc/php/conf.d/helper_tool-dev.ini
 
+WORKDIR /app
+
+# ------------------------------------------- COMPOSER ------------------------------------------- #
+
+COPY --from=composer:2.0.12 /usr/bin/composer /usr/local/bin/composer
+
 # ------------------------------------------- SYMFONY -------------------------------------------- #
 
 RUN \
     wget https://get.symfony.com/cli/installer -O - | bash \
     && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
-
-WORKDIR /app
 
 RUN symfony server:ca:install

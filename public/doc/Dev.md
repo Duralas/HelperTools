@@ -2,15 +2,20 @@
 
 ## Commandes utiles
 
-### Installer les dépendances composer
+### Manipuler les dépendances composer
+
+> **ℹ** Le container `duralas_helper_tools_php` récupère `composer` le rendant accessible en ligne de commandes.
 
 ```shell
-# Exemple par docker
-# sudo docker pull composer
-docker run --rm --interactive --tty \
-  --volume $PWD:/app \
-  --user $(id -u):$(id -g) \
+# Installation par docker
+docker exec --interactive --tty \
+  duralas_helper_tools_php \
   composer install
+
+# Ajout d'une dépendance par docker
+docker exec --interactive --tty \
+  duralas_helper_tools_php \
+  composer require foo/bar
 ```
 
 ### Installer les dépendances yarn

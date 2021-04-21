@@ -1,6 +1,8 @@
 # Dùralas
 [Dùralas](https://www.lemondededuralas.org/) est un forum français de rôle-play dans un univers médiéval-fantastique. Le principe est d'écrire des récits mettant en scène son propre personnage afin d'interagir avec d'autres joueurs.
 
+*[📃 Environnement de DEV](public/doc/Dev.md)*
+
 ## Administratif
 
 Divers fonctionnements RP nécessite une administration de la part des maîtres du Jeu sur plusieurs domaines : commerce, artisanat, combat, etc.
