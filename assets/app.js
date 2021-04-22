@@ -18,7 +18,12 @@ import * as mdc from "material-components-web";
 //region ----- Implementations -----
 
 // Material Design - Listes => https://material.io/develop/web/components/lists
-const mdcList = new mdc.list.MDCList(document.querySelector(".mdc-list"));
-mdcList.listElements.map((listItemEl) => new mdc.ripple.MDCRipple(listItemEl));
+Array
+    .from(document.querySelectorAll(".mdc-list"))
+    .map(function (listElement) {
+        (new mdc.list.MDCList(listElement))
+            .listElements
+            .map((listItemElement) => new mdc.ripple.MDCRipple(listItemElement));
+    });
 
 //endregion -- Implementations -----
