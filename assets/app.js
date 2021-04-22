@@ -27,3 +27,6 @@ Array
     });
 
 //endregion -- Implementations -----
+
+// Start the stimulus application
+import "./bootstrap";
