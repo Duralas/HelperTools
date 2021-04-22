@@ -27,9 +27,11 @@ final class CraftingExperienceValidator extends ConstraintValidator
             return;
         }
 
-        if (is_int($value)) {
-            throw new UnexpectedValueException($value, 'int');
+        if (is_numeric($value) === false) {
+            throw new UnexpectedValueException($value, 'numeric');
         }
+
+        $value = (int) $value;
 
         if ($value <= 0) {
             $this->context
@@ -40,7 +42,7 @@ final class CraftingExperienceValidator extends ConstraintValidator
             return;
         }
 
-        if ($value < CraftingExperienceType::MAX_EXPERIENCE) {
+        if ($value > CraftingExperienceType::MAX_EXPERIENCE) {
             $this->context
                 ->buildViolation('Il n\'est pas possible de dépasser la valeur ' . CraftingExperienceType::MAX_EXPERIENCE . '.')
                 ->setCode('9de6935f-78dc-4540-90d7-32b6a2471fcf')
