@@ -2,7 +2,7 @@ FROM php:7.4.16-fpm-alpine3.13 as php
 
 RUN \
     apk add --no-cache --virtual .build-deps autoconf gcc g++ make \
-    && apk add --no-cache bash icu-dev \
+    && apk add --no-cache bash git icu-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl opcache \
     && apk del .build-deps

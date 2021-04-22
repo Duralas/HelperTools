@@ -3,17 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <title>DùralasTools - {% block title %}{% endblock %}</title>
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
             <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
         <main class="mdc-layout-grid">
             {% block body %}{% endblock %}
         </main>
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
     </body>
 </html>
