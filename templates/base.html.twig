@@ -2,7 +2,10 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
+
         <title>DùralasTools - {% block title %}{% endblock %}</title>
+        <meta name="description" content="Outils de gestion administrative sur le forum RPG Dùralas">
+        <meta name="keywords" content="dùralas, duralas, forum rpg, forum, rpg, jdr, rp, role play, fantasy, medieval">
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -14,6 +17,20 @@
         {% endblock %}
     </head>
     <body>
+        <header role="banner">
+            <div style="position: relative; top: 0; left: 0;">
+                <div style="position: relative; overflow: hidden;">
+                    <img src="{{ asset(random_header.getHeader) }}" alt="Bienvenue à Dùralas !">
+                </div>
+                <div style="height: 100%; position: absolute; top: 0; width: 100%">
+                    <a id="banner-logo" href="{{ path('index') }}" rel="home" aria-label="Redirection vers la page d'accueil" style="align-items: baseline; display: flex; height: 100%;">
+                        <img src="{{ asset('build/images/headers/duralas.png') }}" alt="DùralasTools">
+                    </a>
+                </div>
+            </div>
+            <div data-controller="news"></div>
+        </header>
+
         <main class="mdc-layout-grid">
             {% block body %}{% endblock %}
         </main>

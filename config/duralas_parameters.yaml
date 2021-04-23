@@ -1,0 +1,13 @@
+parameters:
+  app_duralas_headers:
+    spring:
+      - 'cernunnos.png'
+      - 'djollfulin.png'
+      - 'goat-man.png'
+      - 'goblins.png'
+      - 'knight.png'
+      - 'raven.png'
+      - 'treant.png'
+      - 'wanderer.png'
+      - 'warlock.png'
+      - 'witch.png'

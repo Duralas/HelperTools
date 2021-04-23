@@ -3,6 +3,9 @@
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+imports:
+  - { resource: 'duralas_parameters.yaml' }
+
 parameters:
 
 services:
@@ -19,7 +22,12 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+            - '../src/Service/'
             - '../src/Tests/'
+
+    App\Service\RandomHeader:
+      bind:
+        $headers: '%app_duralas_headers%'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
