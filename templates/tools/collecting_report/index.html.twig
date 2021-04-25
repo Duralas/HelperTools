@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Génération d'un rapport de récolte</h1>
 
-    {% include 'tools/collecting_report/form.html.twig' %}
-
     {% if tool_generation ?? false %}
         {% include 'tools/collecting_report/generation.html.twig' %}
     {% endif %}
+
+    {% include 'tools/collecting_report/form.html.twig' %}
 {% endblock %}

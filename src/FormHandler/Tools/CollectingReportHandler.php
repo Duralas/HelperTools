@@ -45,7 +45,7 @@ final class CollectingReportHandler
                     $this->getLootsInArea($collectingSummary->getCollectingLicense(), $collectingSummary->getCollectingArea(), $craftingExperience),
                     is_int($craftingExperience) ? $this->getEarnedXp($craftingExperience, $collectingSummary->getCollectingArea()) : '',
                     $collectingSummary->getAdditionalReward(),
-                    is_int($craftingExperience) ? $this->completeComment($collectingSummary->getComment(), $craftingExperience, $collectingSummary->getCollectingArea(), $collectingSummary->getAdditionalReward()) : '',
+                    is_int($craftingExperience) ? $this->completeComment($collectingSummary->getComment(), $craftingExperience, $collectingSummary->getCollectingArea(), $collectingSummary->getAdditionalReward()) : $collectingSummary->getComment(),
                     $this->getValidatedQuests($collectingSummary->getCollectingLicense(), $collectingSummary->getCollectingQuest())
                 )
             )

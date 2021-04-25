@@ -1,0 +1,12 @@
+{% block text_row %}
+    <div {{ stimulus_controller('input-field', { widget: form|react_widget('text') }) }}></div>
+{% endblock %}
+
+{% block textarea_row %}
+    <div {{ stimulus_controller('input-field', { widget: form|react_widget('textarea') }) }}></div>
+{% endblock %}
+
+{% block number_row %}
+    <div {{ stimulus_controller('input-field', { widget: form|react_widget('number') }) }}></div>
+{% endblock %}
+
