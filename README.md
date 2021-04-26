@@ -1,7 +1,7 @@
 # Dùralas
 [Dùralas](https://www.lemondededuralas.org/) est un forum français de rôle-play dans un univers médiéval-fantastique. Le principe est d'écrire des récits mettant en scène son propre personnage afin d'interagir avec d'autres joueurs.
 
-*[📃 Environnement de DEV](public/doc/Dev.md)*
+*[📃 Environnement de DEV](doc/Dev.md)*
 
 ## Administratif
 
@@ -33,7 +33,7 @@ Chaque rapport de gestionnaire RP est une source d'outil d'aide demandant une ge
     - [ ] Transaction multi-cible (dont échanges) dans l'Hôtel de Vente
     - [ ] Affichage des stocks dans l'Hôtel de Vente
 * Métiers (Le Marchand)
-    - [x] [Rapport de récolte](public/doc/CollectingReport.md) (bûcheron, chasseur, mineur)
+    - [x] [Rapport de récolte](doc/CollectingReport.md) (bûcheron, chasseur, mineur)
     - [ ] Rapport de fabrication (forgeron, forgeron d'armures, sculpteur)
 * Combats (Le Juge)
     - [ ] Fiche de combat
