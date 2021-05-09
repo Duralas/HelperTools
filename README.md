@@ -34,7 +34,7 @@ Chaque rapport de gestionnaire RP est une source d'outil d'aide demandant une ge
     - [ ] Affichage des stocks dans l'Hôtel de Vente
 * Métiers (Le Marchand)
     - [x] [Rapport de récolte](doc/CollectingReport.md) (bûcheron, chasseur, mineur)
-    - [ ] [Rapport de fabrication](doc/ManufacturingReport.md) (forgeron, forgeron d'armures, sculpteur)
+    - [x] [Rapport de fabrication](doc/ManufacturingReport.md) (forgeron, forgeron d'armures, sculpteur)
     - [ ] Rapport de distillation (remèdes, poisons)
 * Combats (Le Juge)
     - [ ] Fiche de combat
