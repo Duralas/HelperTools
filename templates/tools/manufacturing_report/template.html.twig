@@ -1,0 +1,16 @@
+<u>Rapport de fabrication</u> :
+
+{% if crafts %}
+    <strong class="{{ ("admin.race." ~ race)|trans({}, "rules") }}">{{ character }}</strong> fabrique {{ crafts }}{% if crafting_experience != '' %} et gagne {{ crafting_experience }} points métier{% endif %}.
+{% endif %}
+{% if refinements %}
+    <strong class="{{ ("admin.race." ~ race)|trans({}, "rules") }}">{{ character }}</strong> améliore {{ refinements }}.
+{% endif %}
+{% if additional_reward %}
+    {{ character }} gagne aussi <span class="récompense">{{ additional_reward }}</span>.
+{% endif %}
+
+<u>Informations complémentaires</u> : {{ comment|raw }}
+{% for quest in validated_quests %}
+    Réalisation de la quête <strong>{{ quest.name }}</strong> et récupération des récompenses suivantes : {{ quest.reward }}.
+{% endfor %}

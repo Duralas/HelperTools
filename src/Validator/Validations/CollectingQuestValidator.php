@@ -8,38 +8,16 @@ use App\{
     Model\Tools\CollectingSummary,
     Validator\Constraints\CollectingQuest
 };
-use Symfony\Component\Validator\{
-    Constraint,
-    ConstraintValidator,
-    Exception\UnexpectedTypeException,
-    Exception\UnexpectedValueException
-};
 
-final class CollectingQuestValidator extends ConstraintValidator
+final class CollectingQuestValidator extends AbstractQuestValidator
 {
-    public function validate($value, Constraint $constraint): void
+    protected function getConstraintFqcn(): string
     {
-        if ($constraint instanceof CollectingQuest === false) {
-            throw new UnexpectedTypeException($constraint, CollectingQuest::class);
-        }
+        return CollectingQuest::class;
+    }
 
-        if ($value === null) {
-            return;
-        }
-
-        if (is_array($value) === false) {
-            throw new UnexpectedValueException($value, 'string[]');
-        }
-
-        foreach ($value as $quest) {
-            if (in_array($quest, CollectingSummary::COLLECTING_QUESTS, true) === false) {
-                $this->context
-                    ->buildViolation("La quête ne correspond à aucune connue.")
-                    ->setCode('11669e06-47ee-4a8b-99ee-928b09d09f7a')
-                    ->addViolation();
-
-                break;
-            }
-        }
+    protected function getQuestList(): array
+    {
+        return CollectingSummary::COLLECTING_QUESTS;
     }
 }

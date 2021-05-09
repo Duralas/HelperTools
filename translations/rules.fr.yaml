@@ -12,6 +12,13 @@ admin.race.black_stryge: stryge-noir
 admin.race.therianthrope: thérianthrope
 admin.race.vampire: vampire
 
+admin.crafting.license.logger: Bûcheron
+admin.crafting.license.hunter: Chasseur
+admin.crafting.license.minor: Mineur
+admin.crafting.license.armorsmith: Forgeron
+admin.crafting.license.weaponsmith: Forgeron d'armures
+admin.crafting.license.carver: Sculpteur
+
 quest.licensing.apprentice: Première récolte d\'apprenti
 quest.licensing.journeyman: Première récolte de compagnon
 quest.licensing.expert: Première récolte d\'expert

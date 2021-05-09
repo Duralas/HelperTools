@@ -40,3 +40,22 @@ tools.collecting_summary.collecting_quest.choice.word_list: Liste de mots
 tools.collecting_summary.collecting_quest.label: Quête(s) réalisée(s)
 tools.collecting_summary.comment.label: Commentaire(s)
 tools.collecting_summary.generate.label: Générer
+
+tools.manufacturing_summary.manufacturing_license.label: Métier de manufacture
+tools.manufacturing_summary.manufacturing_license.choice.armorsmith: Forgeron d'armures
+tools.manufacturing_summary.manufacturing_license.choice.carver: Sculpteur
+tools.manufacturing_summary.manufacturing_license.choice.weaponsmith: Forgeron
+tools.manufacturing_summary.manufactured_equipments.label: Fabrication(s)
+tools.manufacturing_summary.enhanced_equipments.label: Amélioration(s)
+tools.manufacturing_summary.experience_bonus.label: Expérience métier bonus
+tools.manufacturing_summary.additional_reward.label: Récompense additionnelle de bon RP
+tools.manufacturing_summary.manufacturing_quest.choice.apprentice: Première récolte d'apprenti
+tools.manufacturing_summary.manufacturing_quest.choice.expert: Première récolte d'expert
+tools.manufacturing_summary.manufacturing_quest.choice.journeyman: Première récolte de compagnon
+tools.manufacturing_summary.manufacturing_quest.choice.master: Première récolte de maître
+tools.manufacturing_summary.manufacturing_quest.choice.perseverant: Persévérant
+tools.manufacturing_summary.manufacturing_quest.choice.without_them: La disparition
+tools.manufacturing_summary.manufacturing_quest.choice.word_list: Liste de mots
+tools.manufacturing_summary.manufacturing_quest.label: Quête(s) réalisée(s)
+tools.manufacturing_summary.comment.label: Commentaire(s)
+tools.manufacturing_summary.generate.label: Générer

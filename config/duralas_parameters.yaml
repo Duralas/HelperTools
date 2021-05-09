@@ -11,3 +11,735 @@ parameters:
       - 'wanderer.png'
       - 'warlock.png'
       - 'witch.png'
+
+  app_duralas_system_equipments:
+    -
+      name: Dague Camélia
+      registration: weapon-dagger-t5
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Dague Émeraude
+      registration: weapon-dagger-t6-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Dague en adamantium
+      registration: weapon-dagger-t6-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Dague Bestiale
+      registration: weapon-dagger-t7
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Daguishi
+      registration: weapon-dagger-djollfulin
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Dague de Taki
+      registration: weapon-dagger-t8-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Karambiture
+      registration: weapon-dagger-t8-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Double-dagues de Catharsis
+      registration: weapon-dagger-t9
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Griffe des Roses
+      registration: weapon-claw-t5
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Griffe en adamantium
+      registration: weapon-claw-t6-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Griffe perlée
+      registration: weapon-claw-t6-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Griffe du Tigre
+      registration: weapon-claw-t7
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Toriffe
+      registration: weapon-claw-djollfulin
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Manus & Ayus
+      registration: weapon-claw-t8
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Double-griffes Daconiques
+      registration: weapon-claw-t9
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Cestrum
+      registration: weapon-cesta-t5
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Le Sesterce
+      registration: weapon-cesta-t6-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Cestival
+      registration: weapon-cesta-t6-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Droitelet
+      registration: weapon-cesta-t7
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Wane Peunshe Mane
+      registration: weapon-cesta-t8
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Poignes de cristal
+      registration: weapon-cesta-t9-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Marrons glacés
+      registration: weapon-cesta-t9-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Fronde'boisier
+      registration: weapon-slingshot-t5
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Lanceur de topaze
+      registration: weapon-slingshot-t6-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Fustibale forestière
+      registration: weapon-slingshot-t6-2
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Frelonde
+      registration: weapon-slingshot-t7
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Frond'Onsaké
+      registration: weapon-slingshot-t8
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Mini-trébuchet de poche
+      registration: weapon-slingshot-t9
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: M'arc'guerite
+      registration: weapon-bow-t5
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Arc sylvain
+      registration: weapon-bow-t6-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Arc argenté
+      registration: weapon-bow-t6-2
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Le Renarc
+      registration: weapon-bow-t7
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Torarc
+      registration: weapon-bow-djollfulin
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Arc de Link
+      registration: weapon-bow-t8
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Harcquelance
+      registration: weapon-bow-t9
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Nénuphar'balète
+      registration: weapon-crossbow-t5
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Léz'arbalète
+      registration: weapon-crossbow-t6-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Lapilazul'arbalète
+      registration: weapon-crossbow-t6-2
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Arbalète Animale
+      registration: weapon-crossbow-t7
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Arbaleishi
+      registration: weapon-crossbow-djollfulin
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Van H'Elzio
+      registration: weapon-crossbow-t8
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Mini-Baliste
+      registration: weapon-crossbow-t9-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Frelons jumeaux
+      registration: weapon-crossbow-t9-2
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: TonFatsia
+      registration: weapon-tonfa-t5
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Tonfaïence
+      registration: weapon-tonfa-t6-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Tonfamazonite
+      registration: weapon-tonfa-t6-2
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Thon'Fha
+      registration: weapon-tonfa-t7
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Tonfishui
+      registration: weapon-tonfa-djollfulin
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Kazama
+      registration: weapon-tonfa-t8-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Tonfa du sacrifice
+      registration: weapon-tonfa-t8-2
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Les Caducées
+      registration: weapon-tonfa-t9
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Flé'Haur'Tensia
+      registration: weapon-flail-t5
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Fléosse Doray
+      registration: weapon-flail-t6-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Morgenstern
+      registration: weapon-flail-t6-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Buffléo
+      registration: weapon-flail-t7
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Fléhishui
+      registration: weapon-flail-djollfulin
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Fléau d'Angmar
+      registration: weapon-flail-t8-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Fléau Frande
+      registration: weapon-flail-t8-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: L'Ecrabouilleur du Croisé
+      registration: weapon-flail-t9
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Lil'ance
+      registration: weapon-spear-t5
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Lance cristallisée
+      registration: weapon-spear-t6-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Lance dorée
+      registration: weapon-spear-t6-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Queue de manticore
+      registration: weapon-spear-t7
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Lancishui
+      registration: weapon-spear-djollfulin
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: L'Heavy lance de Girardot
+      registration: weapon-spear-t8
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Sarisse
+      registration: weapon-spear-t9
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Perce-Cœur
+      registration: weapon-spear-t9-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Orchid'épée
+      registration: weapon-sword-t5
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Épée dorée
+      registration: weapon-sword-t6-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Épée sylvestre
+      registration: weapon-sword-t6-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Épée Reptilienne
+      registration: weapon-sword-t7
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Étorée
+      registration: weapon-sword-djollfulin
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Gram
+      registration: weapon-sword-t8
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: ZweiHänder
+      registration: weapon-sword-t9
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Faux Gère
+      registration: weapon-scythe-t5
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: F'opale
+      registration: weapon-scythe-t6-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Faux terne
+      registration: weapon-scythe-t6-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Faux Kön
+      registration: weapon-scythe-t7
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Tofaura
+      registration: weapon-scythe-djollfulin
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Faux Zasalamel
+      registration: weapon-scythe-t8-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Ec'lame
+      registration: weapon-scythe-t8-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: La Catabase
+      registration: weapon-scythe-t9
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Pétuni'hache
+      registration: weapon-axe-t5
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Brise-diamant
+      registration: weapon-axe-t6-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Hache en grès
+      registration: weapon-axe-t6-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: La Hache Téhacrer'Dï
+      registration: weapon-axe-t6-3
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Cobr'hache
+      registration: weapon-axe-t7
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Hachui
+      registration: weapon-axe-djollfulin
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Astaröth
+      registration: weapon-axe-t8
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Hache de Berserker
+      registration: weapon-axe-t9
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Masse Ureau
+      registration: weapon-mace-t5
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Masse Aphir
+      registration: weapon-mace-t6-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Ru'g'bis Masse
+      registration: weapon-mace-t6-2
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Le Gourdaim
+      registration: weapon-mace-t7
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Machui
+      registration: weapon-mace-djollfulin
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Massue de Rock
+      registration: weapon-mace-t8
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Masse gargantuesque
+      registration: weapon-mace-t9
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Le Toad
+      registration: weapon-hammer-t5
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Mar'topaze
+      registration: weapon-hammer-t6-1
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Branche cogneuse
+      registration: weapon-hammer-t6-2
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Marteau Rô
+      registration: weapon-hammer-t7
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Martora
+      registration: weapon-hammer-djollfulin
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Wärehammer
+      registration: weapon-hammer-t8
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Le Roth
+      registration: weapon-hammer-t9
+      manufacturingLicense: weaponsmith
+      enhancementLicense: weaponsmith
+    -
+      name: Bâton'n'arcisse
+      registration: weapon-staff-arcanic-t5
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Bâton métallisé
+      registration: weapon-staff-arcanic-t6-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Bâton en acier
+      registration: weapon-staff-arcanic-t6-2
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Le Bathön
+      registration: weapon-staff-arcanic-t7
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Arcanishui
+      registration: weapon-staff-arcanic-djollfulin
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Bâton Niglàli
+      registration: weapon-staff-arcanic-t8
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Tharkûn
+      registration: weapon-staff-arcanic-t9
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Bâton Nagre
+      registration: weapon-staff-ether-t5
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Bâton d'éther Minus
+      registration: weapon-staff-ether-t6-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Bâton d'éther Rier
+      registration: weapon-staff-ether-t6-2
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: L'Ethermite
+      registration: weapon-staff-ether-t7
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Étheora
+      registration: weapon-staff-ether-djollfulin
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Ethernel
+      registration: weapon-staff-ether-t8
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Bâton d’éther suprême
+      registration: weapon-staff-ether-t9
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Sceptre Opikal
+      registration: weapon-scepter-t5
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: L'Ansceptre
+      registration: weapon-scepter-t6-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Sceptre en titane
+      registration: weapon-scepter-t6-2
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Baguette de fée
+      registration: weapon-scepter-t6-3
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Cèptrionix
+      registration: weapon-scepter-t7
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Sceptora
+      registration: weapon-scepter-djollfulin
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Sceptre Iopikeur
+      registration: weapon-scepter-t8
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Sceptre d'Ottobhüs
+      registration: weapon-scepter-t9
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Tourelle offensive
+      registration: weapon-turrel-t9-1
+      manufacturingLicense: carver
+      enhancementLicense: carver
+    -
+      name: Armure Wyvern
+      registration: armor-light-t4
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Plastron de Vif-argent
+      registration: armor-light-t5
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Hishuiarnais
+      registration: armor-light-djollfulin
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Armure d'Eskadi
+      registration: armor-light-t6
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Animarmure
+      registration: armor-intermediary-t4
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Armure de Mithril
+      registration: armor-intermediary-t5
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Cuirishui
+      registration: armor-intermediary-djollfulin
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: La Kenshin Uesugi
+      registration: armor-intermediary-t6
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Armure Hyno
+      registration: armor-heavy-t4
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Armure d'orichalque
+      registration: armor-heavy-t5
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Plastora
+      registration: armor-heavydjollful-djollfulin
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Armure de Havel
+      registration: armor-heavy-t6
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Heaume Hygal
+      registration: armor-helm-t4
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Casque en diamant
+      registration: armor-helm-t5
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Torasque
+      registration: armor-helm-djollfulin
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Cask de Dovakhin
+      registration: armor-helm-t6
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Tashoklier
+      registration: armor-shield-djollfulin
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: L’Éclat du Dragonnier
+      registration: armor-shield-t8
+      manufacturingLicense: armorsmith
+      enhancementLicense: armorsmith
+    -
+      name: Bottes/Fers Tungsténien(ne)s
+      registration: armor-boots-t9
+      manufacturingLicense: carver
+      enhancementLicense: carver
