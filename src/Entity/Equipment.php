@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 /**
  * @ORM\Entity(repositoryClass=EquipmentRepository::class)
  */
-final class Equipment extends Item
+class Equipment extends Item
 {
     /**
      * @ORM\Column(length=20, nullable=true)
