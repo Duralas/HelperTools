@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -eu
+
+if [ $(which docker || false) ]; then
+    source bin/common.inc.bash
+
+    docker-compose up -d
+    dockerPhpExec bin/start
+else
+    symfony serve
+fi

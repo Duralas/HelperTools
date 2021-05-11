@@ -1,21 +1,17 @@
 # Environnement de développement
 
+L'environnement de développement est fourni par `Docker` et l'utilitaire `docker-compose`.
+
 ## Commandes utiles
 
 ### Manipuler les dépendances composer
 
-> **ℹ** Le container `duralas_helper_tools_php` récupère `composer` le rendant accessible en ligne de commandes.
-
 ```shell
-# Installation par docker
-docker exec --interactive --tty \
-  duralas_helper_tools_php \
-  composer install
+# Installer les dépendances
+bin/composer install
 
-# Ajout d'une dépendance par docker
-docker exec --interactive --tty \
-  duralas_helper_tools_php \
-  composer require foo/bar
+# Ajout d'une dépendance
+bin/composer require foo/bar
 ```
 
 ### Installer les dépendances yarn
@@ -44,10 +40,7 @@ docker run --rm --interactive --tty \
 ### Lancer le serveur web
 
 ```shell
-# Exemple par docker-compose
-#docker-compose build
-docker-compose up -d
-docker exec --interactive --tty \
-  duralas_helper_tools_php \
-  symfony serve 
+# Si besoin de recréer le container php "duralas_helper_tools_php" :
+# docker-compose build
+bin/start
 ```
