@@ -28,8 +28,6 @@ services:
 
     App\Form\:
       resource: '../src/Form/'
-      bind:
-        $equipments: '%app_duralas_system_equipments%'
 
     App\Service\RandomHeader:
       bind:
