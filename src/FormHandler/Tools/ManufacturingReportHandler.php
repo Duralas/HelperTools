@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\FormHandler\Tools;
 
 use App\{
+    Entity\Equipment,
     Form\Common\CraftingExperienceType,
-    Model\Common\Equipment,
     Model\Common\Quest,
     Model\Tools\ManufacturingReport,
     Model\Tools\ManufacturingSummary

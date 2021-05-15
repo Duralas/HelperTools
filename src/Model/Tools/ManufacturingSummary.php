@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Model\Tools;
 
 use App\{
-    Model\Common\Equipment,
+    Entity\Equipment,
     Validator\Constraints\Character,
     Validator\Constraints\CraftingExperience,
     Validator\Constraints\EarnedExperience,

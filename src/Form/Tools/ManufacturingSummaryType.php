@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Form\Tools;
 
 use App\{
+    Entity\Equipment,
     Form\Common\CharacterType,
     Form\Common\CraftingExperienceType,
     Form\Common\RaceType,
     Form\Common\StringChoiceType,
-    Model\Common\Equipment,
     Model\Tools\ManufacturingSummary
 };
 use Symfony\Component\Form\{
@@ -21,8 +21,8 @@ use Symfony\Component\Form\{
     Extension\Core\Type\TextType,
     FormBuilderInterface
 };
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -30,23 +30,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 final class ManufacturingSummaryType extends AbstractType
 {
-    private DenormalizerInterface $denormalizer;
-
     private TranslatorInterface $translator;
-
-    /** @var Equipment[] */
-    private array $equipments;
-
-    /**
-     * @required
-     * @return $this
-     */
-    public function setDenormalizer(DenormalizerInterface $normalizer): self
-    {
-        $this->denormalizer = $normalizer;
-
-        return $this;
-    }
 
     /**
      * @required
@@ -59,33 +43,12 @@ final class ManufacturingSummaryType extends AbstractType
         return $this;
     }
 
-    public function getTranslator(): TranslatorInterface
-    {
-        return $this->translator;
-    }
-
-    /**
-     * @required
-     * @param array<string[]> $equipments
-     * @return $this
-     */
-    public function setEquipments(array $equipments): self
-    {
-        $equipmentArray = [];
-        foreach ($equipments as $equipment) {
-            $equipmentArray[] = $this->denormalizer->denormalize($equipment, Equipment::class);
-        }
-        $this->equipments = $equipmentArray;
-
-        return $this;
-    }
-
     /**
      * {@inheritDoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $translator = $this->getTranslator();
+        $translator = $this->translator;
 
         $builder
             ->add('character', CharacterType::class)
@@ -97,11 +60,11 @@ final class ManufacturingSummaryType extends AbstractType
                     ".choice.{$value}",
             ])
             ->add('craftingExperience', CraftingExperienceType::class)
-            ->add('manufacturedEquipments', ChoiceType::class, [
+            ->add('manufacturedEquipments', EntityType::class, [
                 'label' => 'tools.manufacturing_summary.manufactured_equipments.label',
-                'choices' => $this->equipments,
+                'class' => Equipment::class,
                 'choice_label' => static fn (Equipment $equipment) => $equipment->getName(),
-//                'choice_value' => static fn (Equipment $equipment) => $equipment->getRegistration(),
+                'choice_value' => static fn (Equipment $equipment) => $equipment->getRegistration(),
 //                'group_by' => static fn (Equipment $equipment) => $translator->trans(
 //                    'admin.crafting.license.' . $equipment->getManufacturingLicense(),
 //                    [],
@@ -110,11 +73,11 @@ final class ManufacturingSummaryType extends AbstractType
                 'multiple' => true,
                 'required' => false,
             ])
-            ->add('enhancedEquipments', ChoiceType::class, [
+            ->add('enhancedEquipments', EntityType::class, [
                 'label' => 'tools.manufacturing_summary.enhanced_equipments.label',
-                'choices' => $this->equipments,
+                'class' => Equipment::class,
                 'choice_label' => static fn (Equipment $equipment) => $equipment->getName(),
-//                'choice_value' => static fn (Equipment $equipment) => $equipment->getRegistration(),
+                'choice_value' => static fn (Equipment $equipment) => $equipment->getRegistration(),
 //                'group_by' => static fn (Equipment $equipment) => $translator->trans(
 //                    'admin.crafting.license.' . $equipment->getEnhancementLicense(),
 //                    [],

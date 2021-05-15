@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Validator\Validations;
 
 use App\{
-    Model\Common\Equipment,
+    Entity\Equipment,
     Validator\Constraints\Equipment as EquipmentConstraint
 };
 use Symfony\Component\Validator\{
