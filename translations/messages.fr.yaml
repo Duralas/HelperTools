@@ -91,3 +91,9 @@ tools.manufacturing_report.quest.carver.master: L'équipement fabriqué est auto
 tools.manufacturing_report.quest.carver.perseverant: x1 Peau de troll des marais, x1 Peau de troll des glaces, x1 Peau des troll des forêts, x1 Peau de troll des montagnes, x1 Défense de pachyderme et 40 points d'expérience
 tools.manufacturing_report.quest.carver.word_list: 500 pièces d'or
 tools.manufacturing_report.quest.carver.without_them: x2 Potion d'hypersensibilité (+50% effets négatifs) et x2 Potion d'insensibilité (annulation des effets négatifs)
+
+tools.manufacturing_report.comment.ranking_up.apprentice: Félicitations, tu passes au niveau <strong>Apprenti</strong> !
+tools.manufacturing_report.comment.ranking_up.journeyman: Félicitations, tu passes au niveau <strong>Compagnon</strong> !
+tools.manufacturing_report.comment.ranking_up.expert: Félicitations, tu passes au niveau <strong>Expert</strong> !
+tools.manufacturing_report.comment.ranking_up.master: Félicitations, tu passes au niveau <strong>Maître</strong> !
+tools.manufacturing_report.comment.ranking_up.absolute_master: Félicitations, tu passes au niveau <strong>Maître absolu</strong> et tu remportes un artéfact spécial et son titre associé !

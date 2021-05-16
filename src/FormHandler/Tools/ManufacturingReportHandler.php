@@ -6,6 +6,7 @@ namespace App\FormHandler\Tools;
 
 use App\{
     Entity\Equipment,
+    Form\Common\CraftingExperienceType,
     Helper\Tools\CraftingExperienceHelper,
     Model\Common\Quest,
     Model\Tools\ManufacturingReport,
@@ -35,10 +36,12 @@ final class ManufacturingReportHandler
 
     public function generateTemplate(ManufacturingSummary $manufacturingSummary): string
     {
-        $currentEarnedExperience = CraftingExperienceHelper::calculateEarnedXpForManufacturing(
-            $manufacturingSummary->getCraftingExperience(),
-            $manufacturingSummary->getManufacturedEquipments()
-        );
+        $currentEarnedExperience = is_int($manufacturingSummary->getCraftingExperience())
+            ? CraftingExperienceHelper::calculateEarnedXpForManufacturing(
+                $manufacturingSummary->getCraftingExperience(),
+                $manufacturingSummary->getManufacturedEquipments()
+            )
+            : 0;
 
         return $this->rendering->render(
             'tools/manufacturing_report/template.html.twig',
@@ -58,7 +61,14 @@ final class ManufacturingReportHandler
                             : 0,
                         $manufacturingSummary->getAdditionalReward()
                     ),
-                    $manufacturingSummary->getComment(),
+                    is_int($manufacturingSummary->getCraftingExperience())
+                        ? $this->completeComment(
+                            $manufacturingSummary->getComment(),
+                            $manufacturingSummary->getCraftingExperience(),
+                        $manufacturingSummary->getCraftingExperience() + $currentEarnedExperience,
+                        $manufacturingSummary->getExperienceBonus() ?? 0
+                        )
+                        : $manufacturingSummary->getComment(),
                     $this->getValidatedQuests($manufacturingSummary->getManufacturingLicense(), $manufacturingSummary->getManufacturingQuest())
                 )
             )
@@ -114,5 +124,33 @@ final class ManufacturingReportHandler
         }
 
         return $reward . $additionalReward;
+    }
+
+    private function completeComment(
+        string $comment,
+        int $baseExperience,
+        int $currentExperience,
+        int $experienceBonus
+    ): string {
+        $earnedXp = CraftingExperienceHelper::calculateEarnedXp($currentExperience, $experienceBonus);
+        if ($earnedXp === 0) {
+            return $comment;
+        }
+
+        $licenseRequirements = [
+            CraftingExperienceType::LICENSE_RANK_APPRENTICE => CraftingExperienceType::MIN_REQUIREMENT_APPRENTICE,
+            CraftingExperienceType::LICENSE_RANK_JOURNEYMAN => CraftingExperienceType::MIN_REQUIREMENT_JOURNEYMAN,
+            CraftingExperienceType::LICENSE_RANK_EXPERT => CraftingExperienceType::MIN_REQUIREMENT_EXPERT,
+            CraftingExperienceType::LICENSE_RANK_MASTER => CraftingExperienceType::MIN_REQUIREMENT_MASTER,
+            CraftingExperienceType::LICENSE_RANK_ABSOLUTE_MASTER => CraftingExperienceType::MIN_REQUIREMENT_ABSOLUTE_MASTER,
+        ];
+        $comments = [$comment];
+        foreach ($licenseRequirements as $license => $requirement) {
+            if ($baseExperience < $requirement && $currentExperience + $earnedXp >= $requirement) {
+                $comments[] = $this->translator->trans("tools.manufacturing_report.comment.ranking_up.{$license}");
+            }
+        }
+
+        return implode("\n", $comments);
     }
 }
