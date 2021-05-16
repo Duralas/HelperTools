@@ -10,11 +10,16 @@ use App\{
     Validator\Constraints\CraftingExperience,
     Validator\Constraints\EarnedExperience,
     Validator\Constraints\Equipment as EquipmentAssertion,
+    Validator\Constraints\LicensedForEnhancement,
     Validator\Constraints\ManufacturingLicense,
     Validator\Constraints\ManufacturingQuest,
     Validator\Constraints\Race
 };
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\{
+    Constraints as Assert,
+    ConstraintViolationInterface,
+    Context\ExecutionContextInterface
+};
 
 /**
  * Modèle associé au formulaire {@see ManufacturingSummaryType} de génération du rapport de fabrication.
@@ -56,16 +61,10 @@ final class ManufacturingSummary
     /** @CraftingExperience */
     protected ?int $craftingExperience = null;
 
-    /**
-     * @EquipmentAssertion(multiple=true)
-     * @var Equipment[]
-     */
+    /** @var Equipment[] */
     protected array $manufacturedEquipments = [];
 
-    /**
-     * @EquipmentAssertion(multiple=true)
-     * @var Equipment[]
-     */
+    /** @var Equipment[] */
     protected array $enhancedEquipments = [];
 
     /** @EarnedExperience */
@@ -81,6 +80,58 @@ final class ManufacturingSummary
 
     /** @Assert\NotBlank(message="Un commentaire pour aider le joueur à s'améliorer ?") */
     protected string $comment = '';
+
+    /** @Assert\Callback */
+    public function assertEquipments(ExecutionContextInterface $context): void
+    {
+        $violations = $context
+            ->getValidator()
+            ->validate(
+                $this->manufacturedEquipments,
+                [new EquipmentAssertion(['multiple' => true, 'manufacturingLicense' => $this->manufacturingLicense])]
+            );
+        /** @var ConstraintViolationInterface $violation */
+        foreach ($violations as $violation) {
+            $context
+                ->buildViolation($violation->getMessage())
+                ->atPath('manufacturedEquipments')
+                ->setCode($violation->getCode())
+                ->addViolation();
+        }
+
+        $violations = $context
+            ->getValidator()
+            ->validate(
+                $this->enhancedEquipments,
+                [
+                    new EquipmentAssertion(
+                        ['multiple' => true, 'enhancementLicense' => $this->manufacturingLicense]
+                    ),
+                    new LicensedForEnhancement(['craftingExperience' => $this->craftingExperience]),
+                ]
+            );
+        /** @var ConstraintViolationInterface $violation */
+        foreach ($violations as $violation) {
+            $context
+                ->buildViolation($violation->getMessage())
+                ->atPath('enhancedEquipments')
+                ->setCode($violation->getCode())
+                ->addViolation();
+        }
+
+        if (count($this->manufacturedEquipments) === 0 && count($this->enhancedEquipments) === 0) {
+            $context
+                ->buildViolation('Le rapport ne concerne ni manufacture ni amélioration.')
+                ->atPath('manufacturedEquipments')
+                ->setCode('76138508-0f1f-4f12-8230-5e58dc348da5')
+                ->addViolation();
+            $context
+                ->buildViolation('Le rapport ne concerne ni manufacture ni amélioration.')
+                ->atPath('enhancedEquipments')
+                ->setCode('53375e00-8646-4a11-bdfa-585f5ddcdbfa')
+                ->addViolation();
+        }
+    }
 
     public function getCharacter(): string
     {

@@ -17,6 +17,7 @@ class CraftingExperienceType extends AbstractType
     public const MIN_REQUIREMENT_EXPERT = 121;
     public const MIN_REQUIREMENT_MASTER = 161;
     public const MIN_REQUIREMENT_ABSOLUTE_MASTER = 200;
+    public const MIN_REQUIREMENT_ENHANCEMENT = 200;
 
     public const LICENSE_RANK_APPRENTICE = 'apprentice';
     public const LICENSE_RANK_JOURNEYMAN = 'journeyman';

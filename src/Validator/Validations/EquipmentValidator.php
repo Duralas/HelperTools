@@ -38,7 +38,14 @@ final class EquipmentValidator extends ConstraintValidator
         $value = is_array($value) ? $value : [$value];
         foreach ($value as $item) {
             if ($item instanceof Equipment === false) {
-                throw new UnexpectedValueException($item, Equipment::class);
+                $this
+                    ->context
+                    ->buildViolation('Seuls les équipements sont acceptés.')
+                    ->setCode('34270486-d89f-456d-97bb-f8e33dca83a4')
+                    ->setParameter('type', is_object($item) ? get_class($item) : gettype($item))
+                    ->addViolation();
+
+                return;
             }
 
             if (
@@ -46,9 +53,18 @@ final class EquipmentValidator extends ConstraintValidator
                 $item->getManufacturingLicense() !== $constraint->manufacturingLicense
             ) {
                 $licenseTranslationPrefix = 'tools.manufacturing_summary.manufacturing_license.choice.';
-                $expectedLicense = $this->translator->trans($licenseTranslationPrefix . $item->getManufacturingLicense());
-                $actualLicense = $this->translator->trans($licenseTranslationPrefix . $constraint->manufacturingLicense);
-                $this->context
+                $expectedLicense = $this->translator->trans(
+                    $licenseTranslationPrefix . $item->getManufacturingLicense(),
+                    [],
+                    'form'
+                );
+                $actualLicense = $this->translator->trans(
+                    $licenseTranslationPrefix . $constraint->manufacturingLicense,
+                    [],
+                    'form'
+                );
+                $this
+                    ->context
                     ->buildViolation(
                         "L'équipement ne peut être fabriqué que par le métier {$expectedLicense} " .
                         "or il s'agit du contexte du métier {$actualLicense}."
@@ -64,9 +80,18 @@ final class EquipmentValidator extends ConstraintValidator
                 $item->getEnhancementLicense() !== $constraint->enhancementLicense
             ) {
                 $licenseTranslationPrefix = 'tools.manufacturing_summary.manufacturing_license.choice.';
-                $expectedLicense = $this->translator->trans($licenseTranslationPrefix . $item->getEnhancementLicense());
-                $actualLicense = $this->translator->trans($licenseTranslationPrefix . $constraint->enhancementLicense);
-                $this->context
+                $expectedLicense = $this->translator->trans(
+                    $licenseTranslationPrefix . $item->getEnhancementLicense(),
+                    [],
+                    'form'
+                );
+                $actualLicense = $this->translator->trans(
+                    $licenseTranslationPrefix . $constraint->enhancementLicense,
+                    [],
+                    'form'
+                );
+                $this
+                    ->context
                     ->buildViolation(
                         "L'équipement ne peut être amélioré que par le métier {$expectedLicense} " .
                         "or il s'agit du contexte du métier {$actualLicense}."
