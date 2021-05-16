@@ -25,11 +25,6 @@ final class CollectingSummary
         CollectingSummary::COLLECTING_AREA_DJOLLFULIN_BAMBOO,
         CollectingSummary::COLLECTING_AREA_DJOLLFULIN_TAMEHAGANE,
     ];
-    public const COLLECTING_LICENSES = [
-        'hunter',
-        'logger',
-        'miner',
-    ];
     public const COLLECTING_QUESTS = [
         CollectingSummary::QUEST_APPRENTICE,
         CollectingSummary::QUEST_JOURNEYMAN,

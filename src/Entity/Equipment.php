@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\EquipmentRepository;
+use App\{
+    DBAL\ManufacturingLicenseType,
+    Repository\EquipmentRepository
+};
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
@@ -12,13 +15,13 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 class Equipment extends Item
 {
     /**
-     * @ORM\Column(length=20, nullable=true)
+     * @ORM\Column(length=20, nullable=true, type=ManufacturingLicenseType::ENUM_NAME)
      * @SerializedName("manufacturing_license")
      */
     protected ?string $manufacturingLicense = null;
 
     /**
-     * @ORM\Column(length=20, nullable=true)
+     * @ORM\Column(length=20, nullable=true, type=ManufacturingLicenseType::ENUM_NAME)
      * @SerializedName("enhancement_license")
      */
     protected ?string $enhancementLicense = null;
@@ -45,6 +48,19 @@ class Equipment extends Item
     public function setEnhancementLicense(?string $enhancementLicense): self
     {
         $this->enhancementLicense = $enhancementLicense;
+
+        return $this;
+    }
+
+    public function getRecipe(): ?Recipe
+    {
+        return $this->recipe;
+    }
+
+    /** @return $this */
+    public function setRecipe(?Recipe $recipe): self
+    {
+        $this->recipe = $recipe;
 
         return $this;
     }

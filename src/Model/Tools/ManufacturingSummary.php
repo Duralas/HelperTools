@@ -27,11 +27,6 @@ use Symfony\Component\Validator\{
  */
 final class ManufacturingSummary
 {
-    public const MANUFACTURING_LICENSES = [
-        'carver',
-        'weaponsmith',
-        'armorsmith',
-    ];
     public const MANUFACTURING_QUESTS = [
         ManufacturingSummary::QUEST_APPRENTICE,
         ManufacturingSummary::QUEST_JOURNEYMAN,

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Form\Tools;
 
 use App\{
+    DBAL\ManufacturingLicenseType,
     Form\Common\AdditionalRewardType,
     Form\Common\CharacterType,
     Form\Common\CommentType,
@@ -54,7 +55,7 @@ final class ManufacturingSummaryType extends AbstractType
             ->add('race', RaceType::class)
             ->add('manufacturingLicense', StringChoiceType::class, [
                 'label' => 'Métier de manufacture',
-                'choices' => ManufacturingSummary::MANUFACTURING_LICENSES,
+                'choices' => ManufacturingLicenseType::MANUFACTURING_LICENSES,
                 'choice_label' => static fn (string $value) => 'tools.manufacturing_summary.manufacturing_license' .
                     ".choice.{$value}",
             ])
@@ -65,7 +66,7 @@ final class ManufacturingSummaryType extends AbstractType
                     return $repo
                         ->createQueryBuilder('e')
                         ->where('e.manufacturingLicense in (:licenses)')
-                        ->setParameter('licenses', ManufacturingSummary::MANUFACTURING_LICENSES);
+                        ->setParameter('licenses', ManufacturingLicenseType::MANUFACTURING_LICENSES);
                 },
 //                'group_by' => static fn (Equipment $equipment) => $translator->trans(
 //                    'admin.crafting.license.' . $equipment->getManufacturingLicense(),
@@ -81,7 +82,7 @@ final class ManufacturingSummaryType extends AbstractType
                     return $repo
                         ->createQueryBuilder('e')
                         ->where('e.enhancementLicense in (:licenses)')
-                        ->setParameter('licenses', ManufacturingSummary::MANUFACTURING_LICENSES);
+                        ->setParameter('licenses', ManufacturingLicenseType::MANUFACTURING_LICENSES);
                 },
 //                'group_by' => static fn (Equipment $equipment) => $translator->trans(
 //                    'admin.crafting.license.' . $equipment->getEnhancementLicense(),

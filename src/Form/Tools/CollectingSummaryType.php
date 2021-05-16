@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Form\Tools;
 
 use App\{
+    DBAL\CollectingLicenseType,
     Form\Common\AdditionalRewardType,
     Form\Common\CharacterType,
     Form\Common\CommentType,
@@ -36,7 +37,7 @@ final class CollectingSummaryType extends AbstractType
             ->add('race', RaceType::class)
             ->add('collectingLicense', StringChoiceType::class, [
                 'label' => 'Métier de récolte',
-                'choices' => CollectingSummary::COLLECTING_LICENSES,
+                'choices' => CollectingLicenseType::COLLECTING_LICENSES,
                 'choice_label' => static fn (string $value) => "tools.collecting_summary.collecting_license.choice.{$value}",
             ])
             ->add('craftingExperience', CraftingExperienceType::class)
