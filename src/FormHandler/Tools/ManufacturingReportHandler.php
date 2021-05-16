@@ -35,7 +35,10 @@ final class ManufacturingReportHandler
 
     public function generateTemplate(ManufacturingSummary $manufacturingSummary): string
     {
-        $craftingExperience = $manufacturingSummary->getCraftingExperience();
+        $currentEarnedExperience = $this->calculateEarnedXp(
+            $manufacturingSummary->getCraftingExperience(),
+            $this->calculateEarnedXpByEquipments($manufacturingSummary->getManufacturedEquipments())
+        );
 
         return $this->rendering->render(
             'tools/manufacturing_report/template.html.twig',
@@ -44,9 +47,17 @@ final class ManufacturingReportHandler
                     $manufacturingSummary->getRace(),
                     $manufacturingSummary->getCharacter(),
                     $this->getEquipments($manufacturingSummary->getManufacturedEquipments()),
-                    is_int($craftingExperience) ? $this->getEarnedXp($craftingExperience) : '',
+                    is_int($manufacturingSummary->getCraftingExperience())
+                        ? $this->getEarnedXp($currentEarnedExperience)
+                        : '',
                     $this->getEquipments($manufacturingSummary->getEnhancedEquipments()),
-                    $this->getAdditionalReward($manufacturingSummary->getExperienceBonus(), $manufacturingSummary->getAdditionalReward()),
+                    $this->getAdditionalReward(
+                        $manufacturingSummary->getExperienceBonus(),
+                        is_int($manufacturingSummary->getCraftingExperience())
+                            ? $manufacturingSummary->getCraftingExperience() + $currentEarnedExperience
+                            : 0,
+                        $manufacturingSummary->getAdditionalReward()
+                    ),
                     $manufacturingSummary->getComment(),
                     $this->getValidatedQuests($manufacturingSummary->getManufacturingLicense(), $manufacturingSummary->getManufacturingQuest())
                 )
@@ -85,23 +96,33 @@ final class ManufacturingReportHandler
         return $validatedQuests;
     }
 
-    private function getEarnedXp(int $experience): string
+    private function getEarnedXp(int $earnedXp): string
     {
-        return $this->translator->trans('tools.manufacturing_report.exp_reward', ['%count%' => $this->calculateEarnedXp($experience)]);
+        return $this->translator->trans('tools.manufacturing_report.exp_reward', ['%count%' => $earnedXp]);
     }
 
-    private function getAdditionalReward(?int $experienceBonus, string $additionalReward): string
-    {
+    private function getAdditionalReward(
+        ?int $experienceBonus,
+        int $currentExperience,
+        string $additionalReward
+    ): string {
         $reward = '';
         if (is_int($experienceBonus)) {
-            $reward = $this->getEarnedXp($experienceBonus) . ($additionalReward === '' ? '' : ' et ');
+            $reward = $this->getEarnedXp($this->calculateEarnedXp($currentExperience, $experienceBonus)) .
+                ($additionalReward === '' ? '' : ' et ');
         }
 
         return $reward . $additionalReward;
     }
 
-    private function calculateEarnedXp(int $experience): int
+    private function calculateEarnedXp(int $experience, int $earnedExperience): int
     {
-        return min(CraftingExperienceType::MAX_EXPERIENCE - $experience, CraftingExperienceType::EXPERIENCE_BY_RP);
+        return min(CraftingExperienceType::MAX_EXPERIENCE - $experience, $earnedExperience);
+    }
+
+    /** @param Equipment[] $equipments */
+    private function calculateEarnedXpByEquipments(array $equipments): int
+    {
+        return CraftingExperienceType::EXPERIENCE_BY_RP * count($equipments);
     }
 }
