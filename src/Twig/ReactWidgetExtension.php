@@ -31,7 +31,7 @@ final class ReactWidgetExtension extends AbstractExtension
         return [
             'attr' => $formView->vars['attr'],
             'choices' => $widget === 'choice'
-                ? $this->getChoices($formView->vars['choices'], $formView->vars['translation_domain'])
+                ? $this->getChoices($formView->vars['choices'], $this->getChoiceTranslationDomain($formView))
                 : null,
             'disabled' => $formView->vars['disabled'],
             'error' => array_key_exists('errors', $formView->vars) ? $formView->vars['errors']->count() > 0 : null,
@@ -39,7 +39,9 @@ final class ReactWidgetExtension extends AbstractExtension
                 ? $this->getHelperText($formView->vars['errors'], $formView->vars['help'])
                 : $formView->vars['help'] ?? '',
             'id' => $formView->vars['id'],
-            'label' => $this->translator->trans($formView->vars['label'], [], $formView->vars['translation_domain']),
+            'label' => is_string($formView->vars['translation_domain'])
+                ? $this->translator->trans($formView->vars['label'], [], $formView->vars['translation_domain'])
+                : $formView->vars['label'],
             'multiline' => $widget === 'textarea',
             'multiple' => $formView->vars['multiple'] ?? false,
             'name' => $formView->vars['full_name'],
@@ -76,13 +78,26 @@ final class ReactWidgetExtension extends AbstractExtension
      * @param array<ChoiceView> $choices
      * @return array<string>
      */
-    private function getChoices(array $choices, string $translationDomain): array
+    private function getChoices(array $choices, ?string $translationDomain): array
     {
         $formattedChoices = [];
-        foreach ($choices as $choice) {
-            $formattedChoices[$choice->value] = $this->translator->trans($choice->label, [], $translationDomain);
+        if (is_string($translationDomain)) {
+            foreach ($choices as $choice) {
+                $formattedChoices[$choice->value] = $this->translator->trans($choice->label, [], $translationDomain);
+            }
+        } else {
+            foreach ($choices as $choice) {
+                $formattedChoices[$choice->value] = $choice->label;
+            }
         }
 
         return $formattedChoices;
+    }
+
+    private function getChoiceTranslationDomain(FormView $formView): ?string
+    {
+        $translationDomain = $formView->vars['choice_translation_domain'] ?? $formView->vars['translation_domain'];
+
+        return is_string($translationDomain) ? $translationDomain : null;
     }
 }
