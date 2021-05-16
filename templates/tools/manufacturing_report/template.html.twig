@@ -1,7 +1,7 @@
 <u>Rapport de fabrication</u> :
 
 {% if crafts %}
-    <strong class="{{ ("admin.race." ~ race)|trans({}, "rules") }}">{{ character }}</strong> fabrique {{ crafts }}{% if crafting_experience != '' %} et gagne {{ crafting_experience }} points métier{% endif %}.
+    <strong class="{{ ("admin.race." ~ race)|trans({}, "rules") }}">{{ character }}</strong> fabrique {{ crafts }}{% if crafting_experience != '' %} et gagne {{ crafting_experience }}{% endif %}.
 {% endif %}
 {% if refinements %}
     <strong class="{{ ("admin.race." ~ race)|trans({}, "rules") }}">{{ character }}</strong> améliore {{ refinements }}.

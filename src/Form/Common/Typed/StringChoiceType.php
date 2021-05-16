@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Form\Common;
+namespace App\Form\Common\Typed;
 
 use Symfony\Component\Form\{
     DataTransformerInterface,
@@ -14,7 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class StringChoiceType extends ChoiceType implements DataTransformerInterface
 {
-    private bool $isNullable = false;
+    private bool $isRequired = false;
 
     /** @param array<mixed> $options */
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -24,24 +24,19 @@ class StringChoiceType extends ChoiceType implements DataTransformerInterface
         parent::buildForm($builder, $options);
 
         // Récupération de l'option en tant qu'attribut de class pour les méthodes DataTransformer
-        $optIsNullable = $options['is_nullable'];
-        if (is_bool($optIsNullable) === false) {
-            throw new UnexpectedTypeException($optIsNullable, 'bool');
+        $optIsRequired = $options['required'];
+        if (is_bool($optIsRequired) === false) {
+            throw new UnexpectedTypeException($optIsRequired, 'bool');
         }
-        $this->isNullable = $optIsNullable;
+        $this->isRequired = $optIsRequired;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver
-            ->define('is_nullable')
-            ->default($this->isNullable)
-            ->allowedTypes('bool')
-        ;
-
-        $resolver->setDefault('translation_domain', 'form');
-
         parent::configureOptions($resolver);
+
+        $resolver->setDefault('choice_translation_domain', 'form');
+        $resolver->setAllowedValues('multiple', false);
     }
 
     /** @param mixed $value */
@@ -64,6 +59,6 @@ class StringChoiceType extends ChoiceType implements DataTransformerInterface
     /** @param mixed $value */
     private function isUnexpectedType($value): bool
     {
-        return is_string($value) === false && ($value !== null || $this->isNullable === false);
+        return is_string($value) === false && ($value !== null || $this->isRequired);
     }
 }

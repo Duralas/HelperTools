@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace App\Form\Common;
 
-use App\Form\Common\Typed\StringType;
-use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CharacterType extends AbstractType
+class GenerateType extends SubmitType
 {
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'label' => 'Nom',
+            'label' => 'Générer',
         ]);
     }
 
     public function getParent(): string
     {
-        return StringType::class;
+        return SubmitType::class;
     }
 }

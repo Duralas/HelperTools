@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Form\Common;
 
-use Symfony\Component\Form\{
-    AbstractType,
-    Extension\Core\Type\NumberType
-};
+use App\Form\Common\Typed\IntType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CraftingExperienceType extends AbstractType
@@ -30,20 +28,19 @@ class CraftingExperienceType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'label' => 'crafting_experience_type.label',
-                'required' => false,
                 'attr' => [
                     'min' => 0,
                     'max' => static::MAX_EXPERIENCE,
                 ],
-                'html5' => true,
-                'translation_domain' => 'form',
+                'empty_data' => null,
+                'label' => 'Points métier',
+                'required' => false,
             ]
         );
     }
 
     public function getParent(): string
     {
-        return NumberType::class;
+        return IntType::class;
     }
 }

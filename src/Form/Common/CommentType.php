@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace App\Form\Common;
 
-use App\Form\Common\Typed\StringType;
+use App\Form\Common\Typed\StringAreaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CharacterType extends AbstractType
+class CommentType extends AbstractType
 {
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'label' => 'Nom',
+            'label' => 'Commentaire(s)',
         ]);
     }
 
     public function getParent(): string
     {
-        return StringType::class;
+        return StringAreaType::class;
     }
 }

@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace App\Form\Tools;
 
 use App\{
+    Form\Common\AdditionalRewardType,
     Form\Common\CharacterType,
+    Form\Common\CommentType,
     Form\Common\CraftingExperienceType,
+    Form\Common\GenerateType,
     Form\Common\RaceType,
-    Form\Common\StringChoiceType,
+    Form\Common\Typed\StringArrayChoiceType,
+    Form\Common\Typed\StringChoiceType,
     Model\Tools\CollectingSummary
 };
 use Symfony\Component\Form\{
     AbstractType,
-    Extension\Core\Type\ChoiceType,
-    Extension\Core\Type\SubmitType,
-    Extension\Core\Type\TextareaType,
-    Extension\Core\Type\TextType,
     FormBuilderInterface
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +24,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Formulaire pour l'outil "collecting_report" permettant de gérer le rapport des métiers de récolte.
  */
-class CollectingSummaryType extends AbstractType
+final class CollectingSummaryType extends AbstractType
 {
     /**
      * {@inheritDoc}
@@ -34,35 +34,27 @@ class CollectingSummaryType extends AbstractType
         $builder
             ->add('character', CharacterType::class)
             ->add('race', RaceType::class)
-            ->add('collectingLicense', ChoiceType::class, [
-                'label' => 'tools.collecting_summary.collecting_license.label',
+            ->add('collectingLicense', StringChoiceType::class, [
+                'label' => 'Métier de récolte',
                 'choices' => CollectingSummary::COLLECTING_LICENSES,
                 'choice_label' => static fn (string $value) => "tools.collecting_summary.collecting_license.choice.{$value}",
             ])
             ->add('craftingExperience', CraftingExperienceType::class)
             ->add('collectingArea', StringChoiceType::class, [
-                'label' => 'tools.collecting_summary.collecting_area.label',
+                'label' => 'Zone de récolte',
                 'choices' => CollectingSummary::COLLECTING_AREAS,
                 'choice_label' => static fn (string $value) => "tools.collecting_summary.collecting_area.choice.{$value}",
             ])
-            ->add('additionalReward', TextType::class, [
-                'label' => 'tools.collecting_summary.additional_reward.label',
-                'empty_data' => '',
-                'required' => false,
-            ])
-            ->add('collectingQuest', ChoiceType::class, [
-                'label' => 'tools.collecting_summary.collecting_quest.label',
+            ->add('additionalReward', AdditionalRewardType::class)
+            ->add('collectingQuest', StringArrayChoiceType::class, [
+                'label' => 'Quête(s) réalisée(s)',
                 'required' => false,
                 'choices' => CollectingSummary::COLLECTING_QUESTS,
                 'choice_label' => static fn (string $value) => "tools.collecting_summary.collecting_quest.choice.{$value}",
                 'multiple' => true,
             ])
-            ->add('comment', TextareaType::class, [
-                'label' => 'tools.collecting_summary.comment.label',
-            ])
-            ->add('generate', SubmitType::class, [
-                'label' => 'tools.collecting_summary.generate.label',
-            ])
+            ->add('comment', CommentType::class)
+            ->add('generate', GenerateType::class)
         ;
     }
 
@@ -73,7 +65,6 @@ class CollectingSummaryType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => CollectingSummary::class,
-            'translation_domain' => 'form',
         ]);
     }
 }
