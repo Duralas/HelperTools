@@ -26,17 +26,15 @@ class Equipment extends Item
      */
     protected ?string $enhancementLicense = null;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Recipe::class)
+     * @ORM\JoinColumn(name="recipe", referencedColumnName="registration")
+     */
+    protected ?Recipe $recipe = null;
+
     public function getManufacturingLicense(): ?string
     {
         return $this->manufacturingLicense;
-    }
-
-    /** @return $this */
-    public function setManufacturingLicense(?string $manufacturingLicense): self
-    {
-        $this->manufacturingLicense = $manufacturingLicense;
-
-        return $this;
     }
 
     public function getEnhancementLicense(): ?string
@@ -44,10 +42,15 @@ class Equipment extends Item
         return $this->enhancementLicense;
     }
 
-    /** @return $this */
-    public function setEnhancementLicense(?string $enhancementLicense): self
+    public function getRecipe(): ?Recipe
     {
-        $this->enhancementLicense = $enhancementLicense;
+        return $this->recipe;
+    }
+
+    /** @return $this */
+    public function setRecipe(?Recipe $recipe): self
+    {
+        $this->recipe = $recipe;
 
         return $this;
     }
