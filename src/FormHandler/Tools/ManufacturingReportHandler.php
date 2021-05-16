@@ -6,7 +6,7 @@ namespace App\FormHandler\Tools;
 
 use App\{
     Entity\Equipment,
-    Form\Common\CraftingExperienceType,
+    Helper\Tools\CraftingExperienceHelper,
     Model\Common\Quest,
     Model\Tools\ManufacturingReport,
     Model\Tools\ManufacturingSummary
@@ -35,9 +35,9 @@ final class ManufacturingReportHandler
 
     public function generateTemplate(ManufacturingSummary $manufacturingSummary): string
     {
-        $currentEarnedExperience = $this->calculateEarnedXp(
+        $currentEarnedExperience = CraftingExperienceHelper::calculateEarnedXpForManufacturing(
             $manufacturingSummary->getCraftingExperience(),
-            $this->calculateEarnedXpByEquipments($manufacturingSummary->getManufacturedEquipments())
+            $manufacturingSummary->getManufacturedEquipments()
         );
 
         return $this->rendering->render(
@@ -108,21 +108,11 @@ final class ManufacturingReportHandler
     ): string {
         $reward = '';
         if (is_int($experienceBonus)) {
-            $reward = $this->getEarnedXp($this->calculateEarnedXp($currentExperience, $experienceBonus)) .
-                ($additionalReward === '' ? '' : ' et ');
+            $reward = $this->getEarnedXp(
+                CraftingExperienceHelper::calculateEarnedXp($currentExperience, $experienceBonus)
+                ) . ($additionalReward === '' ? '' : ' et ');
         }
 
         return $reward . $additionalReward;
-    }
-
-    private function calculateEarnedXp(int $experience, int $earnedExperience): int
-    {
-        return min(CraftingExperienceType::MAX_EXPERIENCE - $experience, $earnedExperience);
-    }
-
-    /** @param Equipment[] $equipments */
-    private function calculateEarnedXpByEquipments(array $equipments): int
-    {
-        return CraftingExperienceType::EXPERIENCE_BY_RP * count($equipments);
     }
 }

@@ -6,6 +6,7 @@ namespace App\FormHandler\Tools;
 
 use App\{
     Form\Common\CraftingExperienceType,
+    Helper\Tools\CraftingExperienceHelper,
     Model\Common\Quest,
     Model\Tools\CollectingReport,
     Model\Tools\CollectingSummary
@@ -42,11 +43,31 @@ final class CollectingReportHandler
                 new CollectingReport(
                     $collectingSummary->getRace(),
                     $collectingSummary->getCharacter(),
-                    $this->getLootsInArea($collectingSummary->getCollectingLicense(), $collectingSummary->getCollectingArea(), $craftingExperience),
-                    is_int($craftingExperience) ? $this->getEarnedXp($craftingExperience, $collectingSummary->getCollectingArea()) : '',
+                    $this->getLootsInArea(
+                        $collectingSummary->getCollectingLicense(),
+                        $collectingSummary->getCollectingArea(),
+                        $craftingExperience
+                    ),
+                    is_int($craftingExperience)
+                        ? $this->getEarnedXp(
+                            CraftingExperienceHelper::calculateEarnedXpForCollecting(
+                                $craftingExperience,
+                                $collectingSummary->getCollectingArea()
+                            )
+                        )
+                        : '',
                     $collectingSummary->getAdditionalReward(),
-                    is_int($craftingExperience) ? $this->completeComment($collectingSummary->getComment(), $craftingExperience, $collectingSummary->getCollectingArea(), $collectingSummary->getAdditionalReward()) : $collectingSummary->getComment(),
-                    $this->getValidatedQuests($collectingSummary->getCollectingLicense(), $collectingSummary->getCollectingQuest())
+                    is_int($craftingExperience)
+                        ? $this->completeComment(
+                            $collectingSummary->getComment(),
+                            $craftingExperience, $collectingSummary->getCollectingArea(),
+                            $collectingSummary->getAdditionalReward()
+                        )
+                        : $collectingSummary->getComment(),
+                    $this->getValidatedQuests(
+                        $collectingSummary->getCollectingLicense(),
+                        $collectingSummary->getCollectingQuest()
+                    )
                 )
             )
         );
@@ -74,9 +95,9 @@ final class CollectingReportHandler
         return $validatedQuests;
     }
 
-    private function getEarnedXp(int $experience, string $collectingArea): string
+    private function getEarnedXp(int $earnedXp): string
     {
-        return $this->translator->trans('tools.collecting_report.exp_reward', ['%count%' => $this->calculateEarnedXp($experience, $collectingArea)]);
+        return $this->translator->trans('tools.collecting_report.exp_reward', ['%count%' => $earnedXp]);
     }
 
     private function getLootsInArea(string $license, string $collectingArea, ?int $experience): string
@@ -94,8 +115,7 @@ final class CollectingReportHandler
 
     private function completeComment(string $comment, int $experience, string $collectingArea, string $additionalReward): string
     {
-        $earnedXp = $this->calculateEarnedXp($experience, $collectingArea);
-
+        $earnedXp = CraftingExperienceHelper::calculateEarnedXpForCollecting($experience, $collectingArea);
         if ($earnedXp === 0) {
             return $comment;
         }
@@ -124,15 +144,5 @@ final class CollectingReportHandler
         }
 
         return $comment;
-    }
-
-    private function calculateEarnedXp(int $experience, string $collectingArea): int
-    {
-        $earnedXp = min(CraftingExperienceType::MAX_EXPERIENCE - $experience, CraftingExperienceType::EXPERIENCE_BY_RP);
-        if (CraftingExperienceType::MAX_EXPERIENCE - $experience <= CraftingExperienceType::EXPERIENCE_BY_RP && $collectingArea !== CollectingSummary::COLLECTING_AREA_MASTER) {
-            $earnedXp = max(0, $earnedXp - 1);
-        }
-
-        return $earnedXp;
     }
 }

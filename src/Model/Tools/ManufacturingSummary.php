@@ -6,6 +6,7 @@ namespace App\Model\Tools;
 
 use App\{
     Entity\Equipment,
+    Helper\Tools\CraftingExperienceHelper,
     Validator\Constraints\Character,
     Validator\Constraints\CraftingExperience,
     Validator\Constraints\EarnedExperience,
@@ -107,7 +108,17 @@ final class ManufacturingSummary
                     new EquipmentAssertion(
                         ['multiple' => true, 'enhancementLicense' => $this->manufacturingLicense]
                     ),
-                    new LicensedForEnhancement(['craftingExperience' => $this->craftingExperience]),
+                    new LicensedForEnhancement(
+                        [
+                            'craftingExperience' => is_int($this->craftingExperience)
+                                ? $this->craftingExperience + ($this->experienceBonus ?? 0) +
+                                CraftingExperienceHelper::calculateEarnedXpForManufacturing(
+                                    $this->craftingExperience,
+                                    $this->manufacturedEquipments
+                                )
+                                : null
+                        ]
+                    ),
                 ]
             );
         /** @var ConstraintViolationInterface $violation */
