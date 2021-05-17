@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Model\Tools;
 
-use App\Model\Common\Quest;
+use App\{
+    Entity\Recipe,
+    Model\Common\Quest
+};
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
 final class ManufacturingReport
@@ -31,7 +34,13 @@ final class ManufacturingReport
      */
     protected array $validatedQuests;
 
-    /** @param Quest[] $validatedQuests */
+    /** @var Recipe[] */
+    protected array $recipes;
+
+    /**
+     * @param Quest[] $validatedQuests
+     * @param Recipe[] $recipes
+     */
     public function __construct(
         string $race,
         string $character,
@@ -40,7 +49,8 @@ final class ManufacturingReport
         string $refinements,
         string $additionalReward,
         string $comment,
-        array $validatedQuests
+        array $validatedQuests,
+        array $recipes
     ) {
         $this->race = $race;
         $this->character = $character;
@@ -50,6 +60,7 @@ final class ManufacturingReport
         $this->additionalReward = $additionalReward;
         $this->comment = $comment;
         $this->validatedQuests = $validatedQuests;
+        $this->recipes = $recipes;
     }
 
     public function getRace(): string
@@ -91,5 +102,11 @@ final class ManufacturingReport
     public function getValidatedQuests(): array
     {
         return $this->validatedQuests;
+    }
+
+    /** @return Recipe[] */
+    public function getRecipes(): array
+    {
+        return $this->recipes;
     }
 }

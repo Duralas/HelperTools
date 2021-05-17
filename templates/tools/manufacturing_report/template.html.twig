@@ -14,3 +14,10 @@
 {% for quest in validated_quests %}
     Réalisation de la quête <strong>{{ quest.name }}</strong> et récupération des récompenses suivantes : {{ quest.reward }}.
 {% endfor %}
+{% if recipes|length > 0 %}
+
+    ----- Recettes -----
+    {% for recipe in recipes %}
+        × {{ recipe.content }}.
+    {% endfor %}
+{% endif %}

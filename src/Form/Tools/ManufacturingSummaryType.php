@@ -23,33 +23,17 @@ use Symfony\Component\Form\{
     FormBuilderInterface
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Formulaire pour l'outil "manufacturing_report" permettant de gérer le rapport des métiers de manufacture.
  */
 final class ManufacturingSummaryType extends AbstractType
 {
-    private TranslatorInterface $translator;
-
-    /**
-     * @required
-     * @return $this
-     */
-    public function setTranslator(TranslatorInterface $translator): self
-    {
-        $this->translator = $translator;
-
-        return $this;
-    }
-
     /**
      * {@inheritDoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $translator = $this->translator;
-
         $builder
             ->add('character', CharacterType::class)
             ->add('race', RaceType::class)
@@ -62,33 +46,15 @@ final class ManufacturingSummaryType extends AbstractType
             ->add('craftingExperience', CraftingExperienceType::class)
             ->add('manufacturedEquipments', EquipmentType::class, [
                 'label' => 'Fabrication(s)',
-                'query_builder' => static function (EquipmentRepository $repo) {
-                    return $repo
-                        ->createQueryBuilder('e')
-                        ->where('e.manufacturingLicense in (:licenses)')
-                        ->setParameter('licenses', ManufacturingLicenseType::MANUFACTURING_LICENSES);
-                },
-//                'group_by' => static fn (Equipment $equipment) => $translator->trans(
-//                    'admin.crafting.license.' . $equipment->getManufacturingLicense(),
-//                    [],
-//                    'rules'
-//                ),
+                'query_builder' => static fn (EquipmentRepository $repo) =>
+                    $repo->getManufacturingQb(ManufacturingLicenseType::MANUFACTURING_LICENSES),
                 'multiple' => true,
                 'required' => false,
             ])
             ->add('enhancedEquipments', EquipmentType::class, [
                 'label' => 'Amélioration(s)',
-                'query_builder' => static function (EquipmentRepository $repo) {
-                    return $repo
-                        ->createQueryBuilder('e')
-                        ->where('e.enhancementLicense in (:licenses)')
-                        ->setParameter('licenses', ManufacturingLicenseType::MANUFACTURING_LICENSES);
-                },
-//                'group_by' => static fn (Equipment $equipment) => $translator->trans(
-//                    'admin.crafting.license.' . $equipment->getEnhancementLicense(),
-//                    [],
-//                    'rules'
-//                ),
+                'query_builder' => static fn (EquipmentRepository $repo) =>
+                    $repo->getEnhancingQb(ManufacturingLicenseType::MANUFACTURING_LICENSES),
                 'multiple' => true,
                 'required' => false,
             ])

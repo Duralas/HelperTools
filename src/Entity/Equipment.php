@@ -46,12 +46,4 @@ class Equipment extends Item
     {
         return $this->recipe;
     }
-
-    /** @return $this */
-    public function setRecipe(?Recipe $recipe): self
-    {
-        $this->recipe = $recipe;
-
-        return $this;
-    }
 }

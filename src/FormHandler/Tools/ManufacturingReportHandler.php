@@ -6,6 +6,7 @@ namespace App\FormHandler\Tools;
 
 use App\{
     Entity\Equipment,
+    Entity\Recipe,
     Form\Common\CraftingExperienceType,
     Helper\Tools\CraftingExperienceHelper,
     Model\Common\Quest,
@@ -69,7 +70,11 @@ final class ManufacturingReportHandler
                         $manufacturingSummary->getExperienceBonus() ?? 0
                         )
                         : $manufacturingSummary->getComment(),
-                    $this->getValidatedQuests($manufacturingSummary->getManufacturingLicense(), $manufacturingSummary->getManufacturingQuest())
+                    $this->getValidatedQuests(
+                        $manufacturingSummary->getManufacturingLicense(),
+                        $manufacturingSummary->getManufacturingQuest()
+                    ),
+                    $this->getRecipes($manufacturingSummary->getManufacturedEquipments())
                 )
             )
         );
@@ -133,7 +138,7 @@ final class ManufacturingReportHandler
         int $experienceBonus
     ): string {
         $earnedXp = CraftingExperienceHelper::calculateEarnedXp($currentExperience, $experienceBonus);
-        if ($earnedXp === 0) {
+        if ($earnedXp === 0 && $currentExperience - $baseExperience === 0) {
             return $comment;
         }
 
@@ -152,5 +157,17 @@ final class ManufacturingReportHandler
         }
 
         return implode("\n", $comments);
+    }
+
+    /**
+     * @param Equipment[] $manufacturedEquipments
+     * @return Recipe[]
+     */
+    private function getRecipes(array $manufacturedEquipments): array
+    {
+        return array_map(
+            static fn (Equipment $manufacturedEquipment) => $manufacturedEquipment->getRecipe(),
+            $manufacturedEquipments
+        );
     }
 }
