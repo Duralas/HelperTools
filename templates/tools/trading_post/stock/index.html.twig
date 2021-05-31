@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hôtel des Ventes - Stocks{% endblock %}
+
+{% block body %}
+    <h1>Affichage des stocks</h1>
+
+    <h2>Minerais</h2>
+    {% include 'tools/trading_post/stock/list.html.twig' with { stock_list: stock_list_miner, type: 'miner' } %}
+
+    <h2>Rondins de bois</h2>
+    {% include 'tools/trading_post/stock/list.html.twig' with { stock_list: stock_list_logger, type: 'logger' } %}
+
+    <h2>Trophées de chasse</h2>
+    {% include 'tools/trading_post/stock/list.html.twig' with { stock_list: stock_list_hunter, type: 'hunter' } %}
+{% endblock %}
