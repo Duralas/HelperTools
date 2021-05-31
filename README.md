@@ -29,9 +29,9 @@ Chaque rapport de gestionnaire RP est une source d'outil d'aide demandant une ge
 * Commerce (Le Marchand)
     - [ ] Transaction dans une boutique d'armes
     - [ ] Transaction dans une boutique de joueur (optionnel)
-    - [ ] Transaction mono-cible dans l'Hôtel de Vente
-    - [ ] Transaction multi-cible (dont échanges) dans l'Hôtel de Vente
-    - [ ] Affichage des stocks dans l'Hôtel de Vente
+    - [ ] Transaction mono-cible dans l'HdV
+    - [ ] Transaction multi-cible (dont échanges) dans l'HdV
+    - [ ] [Gestion des stocks de l'HdV](doc/TradingPost.md)
 * Métiers (Le Marchand)
     - [x] [Rapport de récolte](doc/CollectingReport.md) (bûcheron, chasseur, mineur)
     - [x] [Rapport de fabrication](doc/ManufacturingReport.md) (forgeron, forgeron d'armures, sculpteur)
@@ -41,6 +41,9 @@ Chaque rapport de gestionnaire RP est une source d'outil d'aide demandant une ge
     - [ ] Fiche de combat auto-évolutive
     - [ ] Attaques des non-joueurs
     - [ ] Rapport de fin de combat
+    
+*Note* : 
+<abbr title="Hôtel des Ventes">HdV</abbr>
 
 -----
 

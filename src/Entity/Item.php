@@ -6,6 +6,18 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discriminator", type="string")
+ * @ORM\DiscriminatorMap(
+ *     {
+ *         "item" = Item::class,
+ *         "equipment" = Equipment::class,
+ *         "crafting_material" = CraftingMaterial::class,
+ *      }
+ * )
+ */
 abstract class Item
 {
     /**
