@@ -98,6 +98,12 @@ tools.manufacturing_report.comment.ranking_up.expert: Félicitations, tu passes 
 tools.manufacturing_report.comment.ranking_up.master: Félicitations, tu passes au niveau <strong>Maître</strong> !
 tools.manufacturing_report.comment.ranking_up.absolute_master: Félicitations, tu passes au niveau <strong>Maître absolu</strong> et tu remportes un artéfact spécial et son titre associé !
 
-tools.trading_post.stock.list.table_header.hunter: Trophées de chasse
-tools.trading_post.stock.list.table_header.logger: Rondins de bois
-tools.trading_post.stock.list.table_header.miner: Minerais
+tools.trading_post.stock.header.hunter: Stock des trophées de chasse
+tools.trading_post.stock.header.logger: Stock des rondins de bois
+tools.trading_post.stock.header.miner: Stock des minerais
+tools.trading_post.stock.table_header.hunter: Trophées de chasse
+tools.trading_post.stock.table_header.logger: Rondins de bois
+tools.trading_post.stock.table_header.miner: Minerais
+tools.trading_post.stock.title.hunter: Trophées de chasse
+tools.trading_post.stock.title.logger: Rondins de bois
+tools.trading_post.stock.title.miner: Minerais

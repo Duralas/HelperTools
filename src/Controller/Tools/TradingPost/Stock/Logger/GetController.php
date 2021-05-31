@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Tools\TradingPost\Stock;
+namespace App\Controller\Tools\TradingPost\Stock\Logger;
 
 use App\{
     Controller\Tools\TradingPost\Stock\StockGetControllerTrait,
@@ -18,12 +18,12 @@ final class GetController extends AbstractController
     use StockGetControllerTrait;
 
     /**
-     * [TWIG] Page présentant la liste des stocks des ressources.
+     * [TWIG] Page présentant les stocks actuels des rondins de bois.
      *
-     * @Route("/hôtel-des-ventes/stocks", name="app.tools.trading_post.stocks.get", methods={"GET"})
+     * @Route("/hôtel-des-ventes/stocks/bûcherons", name="app.tools.trading_post.stocks.logger.get", methods={"GET"})
      */
     public function __invoke(TradingPostStockRepository $repository): Response
     {
-        return $this->render('tools/trading_post/stock/index.html.twig');
+        return $this->renderCollectingLicenseStock($repository, CollectingLicenseType::LICENSE_LOGGER);
     }
 }

@@ -1,16 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hôtel des Ventes - Stocks{% endblock %}
+{% block title %}Outils - Gestion des stocks{% endblock %}
 
 {% block body %}
     <h1>Affichage des stocks</h1>
 
-    <h2>Minerais</h2>
-    {% include 'tools/trading_post/stock/list.html.twig' with { stock_list: stock_list_miner, type: 'miner' } %}
-
-    <h2>Rondins de bois</h2>
-    {% include 'tools/trading_post/stock/list.html.twig' with { stock_list: stock_list_logger, type: 'logger' } %}
-
-    <h2>Trophées de chasse</h2>
-    {% include 'tools/trading_post/stock/list.html.twig' with { stock_list: stock_list_hunter, type: 'hunter' } %}
+    <ul class="mdc-list">
+        <li class="mdc-list-item mdc-list-item--disabled">
+            <span class="mdc-list-item__ripple"></span>
+            <span class="mdc-list-item__text">
+                <a href="{{ path('app.tools.trading_post.stocks.miner.get') }}">Minerais</a>
+            </span>
+        </li>
+        <li class="mdc-list-item mdc-list-item--disabled">
+            <span class="mdc-list-item__ripple"></span>
+            <span class="mdc-list-item__text">
+                <a href="{{ path('app.tools.trading_post.stocks.logger.get') }}">Rondins de bois</a>
+            </span>
+        </li>
+        <li class="mdc-list-item mdc-list-item--disabled">
+            <span class="mdc-list-item__ripple"></span>
+            <span class="mdc-list-item__text">
+                <a href="{{ path('app.tools.trading_post.stocks.hunter.get') }}">Trophées de chasse</a>
+            </span>
+        </li>
+    </ul>
 {% endblock %}

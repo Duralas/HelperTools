@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Tools\TradingPost\Stock;
+namespace App\Controller\Tools\TradingPost\Stock\Hunter;
 
 use App\{
     Controller\Tools\TradingPost\Stock\StockGetControllerTrait,
@@ -18,12 +18,12 @@ final class GetController extends AbstractController
     use StockGetControllerTrait;
 
     /**
-     * [TWIG] Page présentant la liste des stocks des ressources.
+     * [TWIG] Page présentant les stocks actuels des trophées de chasse.
      *
-     * @Route("/hôtel-des-ventes/stocks", name="app.tools.trading_post.stocks.get", methods={"GET"})
+     * @Route("/hôtel-des-ventes/stocks/chasseurs", name="app.tools.trading_post.stocks.hunter.get", methods={"GET"})
      */
     public function __invoke(TradingPostStockRepository $repository): Response
     {
-        return $this->render('tools/trading_post/stock/index.html.twig');
+        return $this->renderCollectingLicenseStock($repository, CollectingLicenseType::LICENSE_HUNTER);
     }
 }
