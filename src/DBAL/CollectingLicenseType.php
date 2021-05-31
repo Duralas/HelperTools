@@ -8,10 +8,13 @@ class CollectingLicenseType extends AbstractEnumType
 {
     public const ENUM_NAME = 'collectingLicense';
     public const COLLECTING_LICENSES = [
-        'hunter',
-        'logger',
-        'miner',
+        self::LICENSE_HUNTER,
+        self::LICENSE_LOGGER,
+        self::LICENSE_MINER,
     ];
+    public const LICENSE_HUNTER = 'hunter';
+    public const LICENSE_LOGGER = 'logger';
+    public const LICENSE_MINER = 'miner';
 
     public function getName(): string
     {
