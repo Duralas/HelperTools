@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\{
+    DBAL\TradingPostStockType,
+    Repository\TradingPostStockRepository
+};
 use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\Entity */
+/** @ORM\Entity(repositoryClass=TradingPostStockRepository::class) */
 class TradingPostStock
 {
     /**
@@ -16,16 +20,20 @@ class TradingPostStock
      */
     protected Item $item;
 
+    /** @ORM\Column(length=50, nullable=true, type=TradingPostStockType::ENUM_NAME) */
+    protected string $type;
+
     /** @ORM\Column(type="integer") */
     protected int $value;
 
     /** @ORM\Column(type="integer") */
     protected int $count;
 
-    public function __construct(Item $item, int $value)
+    public function __construct(Item $item, int $value, string $type)
     {
         $this->item = $item;
         $this->value = $value;
+        $this->type = $type;
     }
 
     public function getItem(): Item
