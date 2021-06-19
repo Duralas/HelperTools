@@ -22,7 +22,9 @@ final class RandomHeader
 
     public function getSeason(): string
     {
-        $month = (int) date('m');
+        return 'spring';
+        
+        /*$month = (int) date('m');
         if ($month < 3) {
             $season = 'winter';
         } elseif ($month < 6) {
@@ -35,6 +37,6 @@ final class RandomHeader
             $season = 'winter';
         }
 
-        return $season;
+        return $season;*/
     }
 }
