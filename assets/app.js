@@ -7,6 +7,8 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import "./styles/app-mdc.scss";
+import "tailwindcss/tailwind.css"
+import "./styles/app.scss";
 
 //region ----- Libraries -----
 

@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@material-ui/core": "^4.11.3",
-        "material-components-web": "^7.0.0"
+        "material-components-web": "^7.0.0",
+        "tailwindcss": "^2.1.2"
     }
 }
